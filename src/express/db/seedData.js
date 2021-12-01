@@ -7,6 +7,7 @@ const {
 async function rebuildDB() {
   try {
     await client.query(/*sql*/`
+      DROP TABLE IF EXISTS carts
       DROP TABLE IF EXISTS users;
     `);
 
@@ -16,6 +17,13 @@ async function rebuildDB() {
         email VARCHAR(255) UNIQUE NOT NULL, 
         password VARCHAR(255) NOT NULL
       );
+
+      CREATE TABLE carts(
+        id SERIAL PRIMARY KEY,
+        "userID" INTEGER REFERENCES users(id),
+        "productID" INTEGER REFERENCES products(id),
+        quantity INTEGER
+      );  
     `)    // drop tables in correct order
     // build tables in correct order
   } catch (error) {
