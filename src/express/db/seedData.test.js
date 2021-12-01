@@ -23,7 +23,7 @@ describe('rebuildDB', () => {
     await seedData();
     const { rows } = await client.query(/*sql*/`
       SELECT * from users
-      WHERE username = $1
+      WHERE email = $1
     `,['testuser']);
     expect(rows.length).toBe(1);
   })

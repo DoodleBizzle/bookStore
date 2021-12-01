@@ -13,7 +13,7 @@ async function rebuildDB() {
     await client.query(/*sql*/`
       CREATE TABLE users(
         id  SERIAL PRIMARY KEY, 
-        username VARCHAR(255) UNIQUE NOT NULL, 
+        email VARCHAR(255) UNIQUE NOT NULL, 
         password VARCHAR(255) NOT NULL
       );
     `)    // drop tables in correct order
@@ -27,15 +27,15 @@ async function seedData() {
   try {
 
   const users = [
-    { username: "testuser", password: "testuser999" }
+    { email: "testuser", password: "testuser999" }
   ];
 
   for(const user of users) {
     await client.query(/*sql*/`
       INSERT INTO users
-      (username, password)
+      (email, password)
       VALUES ($1, $2);
-    `,[user.username, user.password]);
+    `,[user.email, user.password]);
   }
 
   // create useful starting data
