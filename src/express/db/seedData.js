@@ -7,17 +7,26 @@ const {
 async function rebuildDB() {
   try {
     await client.query(`
-      DROP TABLE IF EXISTS carts;
-      DROP TABLE IF EXISTS products;
-      DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS carts;
+    DROP TABLE IF EXISTS products;
+    DROP TABLE IF EXISTS genres;
+    DROP TABLE IF EXISTS users;
     `);
-
+    
     await client.query(`
-      CREATE TABLE users(
-        id  SERIAL PRIMARY KEY, 
-        email VARCHAR(255) UNIQUE NOT NULL, 
-        password VARCHAR(255) NOT NULL
+
+    CREATE TABLE users(
+      id  SERIAL PRIMARY KEY, 
+      email VARCHAR(255) UNIQUE NOT NULL, 
+      password VARCHAR(255) NOT NULL
       );
+
+
+      CREATE TABLE genres(
+        id SERIAL PRIMARY KEY, 
+        name VARCHAR(255)
+      );
+
 
       CREATE TABLE products(
         id SERIAL PRIMARY KEY,
@@ -25,7 +34,7 @@ async function rebuildDB() {
         description VARCHAR(255),
         author VARCHAR(255) NOT NULL,
         format VARCHAR(255) NOT NULL,
-        
+        "genreID" INTEGER REFERENCES genres(id),
         isbn VARCHAR(13) UNIQUE NOT NULL,
         cover_url VARCHAR(255),
         price DECIMAL(2) NOT NULL,
@@ -39,15 +48,13 @@ async function rebuildDB() {
         quantity INTEGER
       );
 
+
     `)    // drop tables in correct order
     // build tables in correct order
   } catch (error) {
     throw error
   }
 }
-
-//ADD IN WITH GENRES TABLE !!!!!
-// "genreID" INTEGER REFERENCES genres(id),
 
 async function seedData() {
   try {
@@ -58,6 +65,14 @@ async function seedData() {
 
   const products = [
     {title: "Notes from Underground", author: "Fyodor Dostoevsky", description: "A good book.", format: "Paperback", isbn: 9780679734529, cover_url: "www.google.com", price: 12.99, stock: 2}
+  ];
+
+  const genres = [
+    {name: "History"},
+    {name: "Horror"},
+    {name: "Manga"},
+    {name: "Fantasy"},
+    {name: "Romance"}
   ];
 
   for(const user of users) {
@@ -74,6 +89,14 @@ async function seedData() {
       (title, description, author, format, isbn, cover_url, price, stock)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
     `,[product.title, product.description, product.author, product.format, product.isbn, product.cover_url, product.price, product.stock]);
+  }
+
+  for(const genre of genres) {
+    await client.query(`
+    INSERT INTO genres
+    (name)
+    VALUES ($1);
+    `, [genre.name]);
   }
 
   // create useful starting data
