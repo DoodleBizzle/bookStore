@@ -14,5 +14,9 @@ const usersRouter = require('./usersRouter');
 apiRouter.use('/users', usersRouter);
 
 // set up error handler here
+apiRouter.use((error, req, res, next)=>{
+  console.error(error)
+  res.send({name: error.name, message: error.message})
+})
 
 module.exports = apiRouter;
