@@ -1,5 +1,5 @@
 const { client } = require(".");
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 const SALT_COUNT = 10
 
 
