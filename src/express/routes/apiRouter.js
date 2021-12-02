@@ -10,4 +10,9 @@ apiRouter.get("/", (req, res, next) => {
 
 // use your sub-routers here
 
+const usersRouter = require('./usersRouter');
+apiRouter.use('/users', usersRouter);
+
+// set up error handler here
+
 module.exports = apiRouter;
