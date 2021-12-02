@@ -41,8 +41,10 @@ usersRouter.post('/register', async (req, res, next) => {
       message: "thank you for signing up",
       token
     });
-  } catch ({name, message}) {
-    next({name, message})
+  } catch (error) {
+    console.error(error);
+    next({name: 'UserCreateError', 
+    message: "Can't create user right now."})
   }
 });
 
