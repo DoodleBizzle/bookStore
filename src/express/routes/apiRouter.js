@@ -11,9 +11,13 @@ apiRouter.get("/", (req, res, next) => {
 // use your sub-routers here
 
 const usersRouter = require('./usersRouter');
-const productsRouter = require('./productsRouter');
 apiRouter.use('/users', usersRouter);
+
+const productsRouter = require('./productsRouter');
 apiRouter.use('./products', productsRouter)
+
+const cartsRouter = require('./cartsRouter');
+apiRouter.use('/cart', cartsRouter);
 
 // set up error handler here
 apiRouter.use((error, req, res, next)=>{
