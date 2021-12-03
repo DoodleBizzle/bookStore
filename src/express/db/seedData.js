@@ -34,7 +34,7 @@ async function rebuildDB() {
         author VARCHAR(255) NOT NULL,
         format VARCHAR(255) NOT NULL,
         "genreID" INTEGER REFERENCES genres(id),
-        isbn bigint UNIQUE NOT NULL,
+        isbn VARCHAR(13) UNIQUE NOT NULL,
         cover_url VARCHAR(255),
         price DECIMAL(2) NOT NULL,
         stock INTEGER NOT NULL
@@ -63,8 +63,8 @@ async function seedData() {
   ];
 
   const products = [
-    {title: "Crime and Punishment", author: "Fyodor Dostoevsky", description: "A great book.", format: "Hardcover", isbn: 9780143058144, cover_url: "www.google.com", price: 18.99, stock: 20},
-    {title: "Notes from Underground", author: "Fyodor Dostoevsky", description: "A good book.", format: "Paperback", isbn: 9780679734529, cover_url: "www.google.com", price: 12.99, stock: 2}
+    {title: "Crime and Punishment", author: "Fyodor Dostoevsky", description: "A great book.", format: "Hardcover", isbn: "9780143058144", cover_url: "www.google.com", price: 18.99, stock: 20},
+    {title: "Notes from Underground", author: "Fyodor Dostoevsky", description: "A good book.", format: "Paperback", isbn: "9780679734529", cover_url: "www.google.com", price: 12.99, stock: 2}
   ];
 
   const genres = [
