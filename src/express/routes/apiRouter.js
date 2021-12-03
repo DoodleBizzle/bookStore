@@ -11,7 +11,9 @@ apiRouter.get("/", (req, res, next) => {
 // use your sub-routers here
 
 const usersRouter = require('./usersRouter');
+const productsRouter = require('./productsRouter');
 apiRouter.use('/users', usersRouter);
+apiRouter.use('./products', productsRouter)
 
 const genresRouter = require('./genresRouter');
 apiRouter.use('/genres', genresRouter);

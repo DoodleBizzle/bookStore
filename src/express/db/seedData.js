@@ -21,7 +21,6 @@ async function rebuildDB() {
       password VARCHAR(255) NOT NULL
       );
 
-
       CREATE TABLE genres(
         id SERIAL PRIMARY KEY, 
         name VARCHAR(255)
@@ -64,7 +63,8 @@ async function seedData() {
   ];
 
   const products = [
-    {title: "Notes from Underground", author: "Fyodor Dostoevsky", description: "A good book.", format: "Paperback", isbn: 9780679734529, cover_url: "www.google.com", price: 12.99, stock: 2}
+    {title: "Crime and Punishment", author: "Fyodor Dostoevsky", description: "A great book.", format: "Hardcover", isbn: "9780143058144", cover_url: "www.google.com", price: 18.99, stock: 20},
+    {title: "Notes from Underground", author: "Fyodor Dostoevsky", description: "A good book.", format: "Paperback", isbn: "9780679734529", cover_url: "www.google.com", price: 12.99, stock: 2}
   ];
 
   const genres = [
@@ -90,6 +90,7 @@ async function seedData() {
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
     `,[product.title, product.description, product.author, product.format, product.isbn, product.cover_url, product.price, product.stock]);
   }
+
 
   for(const genre of genres) {
     await client.query(`
