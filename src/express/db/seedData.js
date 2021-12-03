@@ -34,7 +34,7 @@ async function rebuildDB() {
         author VARCHAR(255) NOT NULL,
         format VARCHAR(255) NOT NULL,
         "genreID" INTEGER REFERENCES genres(id),
-        isbn VARCHAR(13) UNIQUE NOT NULL,
+        isbn bigint UNIQUE NOT NULL,
         cover_url VARCHAR(255),
         price DECIMAL(2) NOT NULL,
         stock INTEGER NOT NULL
