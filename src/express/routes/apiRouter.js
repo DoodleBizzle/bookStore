@@ -13,6 +13,9 @@ apiRouter.get("/", (req, res, next) => {
 const usersRouter = require('./usersRouter');
 apiRouter.use('/users', usersRouter);
 
+const genresRouter = require('./genresRouter');
+apiRouter.use('/genres', genresRouter);
+
 // set up error handler here
 apiRouter.use((error, req, res, next)=>{
   console.error(error)
