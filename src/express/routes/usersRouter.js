@@ -63,8 +63,8 @@ usersRouter.post('/login', async (req, res, next) => {
 
     if (user && user.password == password) {
       const token = jwt.sign(user, process.env.JWT_SECRET);
-      console.log(token)
-      res.send({ message: "you're logged in!" });
+      delete user.password
+      res.send({ user, token, message: "you're logged in!" });
     } else {
       next({ 
         name: 'IncorrectCredentialsError', 
