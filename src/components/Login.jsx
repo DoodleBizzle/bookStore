@@ -1,16 +1,17 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { authContext } from "./AuthProvider"
 
 const Login = () => {
 
     const [emailInput, setEmailInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
+    const {updateAuth} = useContext(authContext)
 
     const handleSubmit = (event) => {
         event.preventDefault()
-
         const attemptLogin = async () => {
 
-            const apiResponse = await fetch('http://localhost:3000/api/users/login', {
+            const apiResponse = await fetch('/api/users/login', {
                 method: 'POST',
                 headers: { 'Content-type': 'Application/json' },
                 body: JSON.stringify({
@@ -20,8 +21,7 @@ const Login = () => {
             })
 
             const parsedApiResponse = await apiResponse.json()
-            console.log(parsedApiResponse)
-
+            updateAuth(parsedApiResponse.user, parsedApiResponse.token)
         }
         attemptLogin()
     }
