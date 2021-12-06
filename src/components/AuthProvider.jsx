@@ -4,6 +4,8 @@ export const authContext = createContext()
 
 const AuthProvider = ({children}) => {
 
+    //TO-DO CALL BACKEND via useEffect and verify the token!!
+
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [user, setUser] = useState(null)
 
