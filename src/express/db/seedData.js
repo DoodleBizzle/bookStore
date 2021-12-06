@@ -75,6 +75,10 @@ async function seedData() {
     {name: "Romance"}
   ];
 
+  const carts = [
+    {productID: "1", userID: "1", quantity: 2}
+  ]
+
   for(const user of users) {
     await client.query(/*sql*/`
       INSERT INTO users
@@ -91,6 +95,12 @@ async function seedData() {
     `,[product.title, product.description, product.author, product.format, product.isbn, product.cover_url, product.price, product.stock]);
   }
 
+  for(const cart of carts) {
+    await client.query(`
+    INSERT INTO carts("productID", "userID", quantity)
+    VALUES ($1, $2, $3)
+    `,[cart.productID, cart.userID, cart.quantity])
+  }
 
   for(const genre of genres) {
     await client.query(`
