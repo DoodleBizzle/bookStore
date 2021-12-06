@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { Switch } from 'react-router';
+import Login from './Login';
+
 import { getMessage } from '../api';
 import NavBar from './NavBar';
 
@@ -28,7 +31,7 @@ const App = () => {
           {/* <Home /> */}
         </Route>
         <Route path='/login'>
-          {/* <Login /> */}
+          <Login />
         </Route>
         <Route path='/register'>
           {/* <Register /> */}

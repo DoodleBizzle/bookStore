@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "start": "per-env",
-    "start:development": "nodemon src/express/server.js & react-scripts start",
+    "start:development": "concurrently -n backend,frontend \"nodemon src/express/server.js\" \"react-scripts start\"",
     "start:production": "node src/express/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
@@ -20,6 +20,7 @@
     "@testing-library/react": "^12.1.2",
     "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
