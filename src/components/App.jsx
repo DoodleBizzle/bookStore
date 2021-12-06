@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import { getMessage } from '../api';
+import NavBar from './NavBar';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
     <h1>Hello, World!</h1>
     <h2>{message}</h2>
     <Router>
-      {/* Navbar */}
+      <NavBar />
       <Switch>
         <Route exact path='/'>
           {/* <Home /> */}
