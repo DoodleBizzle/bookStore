@@ -14,40 +14,6 @@ const App = () => {
   return <>
     <AuthProvider>
       <CartProvider>
-<<<<<<< HEAD
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path='/'>
-              {/* <Home /> */}
-            </Route>
-            <Route path='/login'>
-              <Login />
-            </Route>
-            <Route path='/register'>
-              {/* <Register /> */}
-            </Route>
-            <Route path='/profile'>
-              {/* <Profile /> */}
-            </Route>
-            <Route path='/cart'>
-              {/* <Cart /> */}
-            </Route>
-            <Route path='/products'>
-              <AllProducts />
-            </Route>
-            <Route path='/products/:productID'>
-              {/* <ProductDetails /> */}
-            </Route>
-            <Route path='/search'>
-              {/* <SearchResults /> */}
-            </Route>
-            <Route path='/genres/:genreID'>
-              {/* <AllProducts /> */}
-            </Route>
-          </Switch>
-        </Router>
-=======
       <Router>
         <NavBar/>
         <Switch>
@@ -67,7 +33,7 @@ const App = () => {
             {/* <Cart /> */}
           </Route>
           <Route path='/products'>
-            {/* <AllProducts /> */}
+            <AllProducts />
           </Route>
           <Route path='/products/:productID'>
             {/* <ProductDetails /> */}
@@ -80,7 +46,6 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
->>>>>>> origin
       </CartProvider>
     </AuthProvider>
   </>

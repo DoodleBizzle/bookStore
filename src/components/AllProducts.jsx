@@ -1,27 +1,42 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 
 const AllProducts = () => {
 
-    const [products, setProducts] = ([])
+    const [products, setProducts] = useState([])
 
-    const getProducts = async () => {
+    useEffect(() => {
 
-        const apiResponse = await fetch('/api/products/', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        const productData = await apiResponse.json()
-        console.log(productData)
-    }
+        const getProducts = async () => {
+            const apiResponse = await fetch('/api/products/', {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const productData = await apiResponse.json()
+            setProducts(productData)
+        }
+        
+        getProducts()
 
-    getProducts()
+    }, [])
+
+    console.log(products)
+
+    //ASK BART ABOUT ROUNDING OF PRICE
 
     return <>
         <h1>Products</h1>
-
+        {products.map((product) => (
+            <div key={product.id}>
+                <h2>{product.title}</h2>
+                <h4>by {product.author}</h4>
+                <h4>Format: {product.format}</h4>
+                <h4>$ {product.price}</h4>
+            </div>
+        ))}
     </>
 
 }
 
 export default AllProducts
+
