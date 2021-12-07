@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import AuthProvider from './AuthProvider';
 import Login from './Login';
+import AllProducts from './AllProducts';
 import NavBar from './NavBar';
 
 // This is just a sample App component, replace it with your own.
@@ -29,7 +30,7 @@ const App = () => {
             {/* <Cart /> */}
           </Route>
           <Route path='/products'>
-            {/* <AllProducts /> */}
+            <AllProducts />
           </Route>
           <Route path='/products/:productID'>
             {/* <ProductDetails /> */}
