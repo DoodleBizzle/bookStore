@@ -21,9 +21,9 @@ const Register = () => {
     });
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     const token = data.token;
-    console.log(token);
+    // console.log(token);
     window.localStorage.setItem("token", token);
     data.token
       ? (alert(data.message), history.push("/Login"))
