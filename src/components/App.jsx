@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import AuthProvider from './AuthProvider';
+import CartProvider from './CartProvider';
 import Login from './Login';
 import NavBar from './NavBar';
+import Register from './Register';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {
 
   return <>
     <AuthProvider>
+      <CartProvider>
       <Router>
         <NavBar/>
         <Switch>
@@ -20,7 +23,7 @@ const App = () => {
             <Login />
           </Route>
           <Route path='/register'>
-            {/* <Register /> */}
+            <Register />
           </Route>
           <Route path='/profile'>
             {/* <Profile /> */}
@@ -42,6 +45,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
+      </CartProvider>
     </AuthProvider>
   </>
 }
