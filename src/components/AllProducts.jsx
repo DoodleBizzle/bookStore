@@ -1,4 +1,8 @@
+import {useState} from "react"
+
 const AllProducts = () => {
+
+    const [products, setProducts] = ([])
 
     const getProducts = async () => {
 
@@ -15,6 +19,7 @@ const AllProducts = () => {
 
     return <>
         <h1>Products</h1>
+
     </>
 
 }

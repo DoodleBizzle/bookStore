@@ -32,7 +32,7 @@ const App = () => {
               {/* <Cart /> */}
             </Route>
             <Route path='/products'>
-              {/* <AllProducts /> */}
+              <AllProducts />
             </Route>
             <Route path='/products/:productID'>
               {/* <ProductDetails /> */}
