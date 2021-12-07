@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState('');
   const history = useHistory();
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    // if(password === confirmPassword) {
-    //     setDoPasswordMatch(true);
-    // }
 
     const response = await fetch(`/api/users/register`, {
       method: "POST",
@@ -48,6 +44,8 @@ const Register = () => {
 
         <input
           value={password}
+          type = "password"
+          minLength = "8"
           placeholder="Account Password"
           onChange={(event) => {
             setPassword(event.target.value);

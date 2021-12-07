@@ -4,6 +4,7 @@ import { Switch } from 'react-router';
 import AuthProvider from './AuthProvider';
 import Login from './Login';
 import NavBar from './NavBar';
+import Register from './Register';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
             <Login />
           </Route>
           <Route path='/register'>
-            {/* <Register /> */}
+            <Register />
           </Route>
           <Route path='/profile'>
             {/* <Profile /> */}
