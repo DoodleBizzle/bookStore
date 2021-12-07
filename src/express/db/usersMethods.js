@@ -23,7 +23,6 @@ async function getUserByEmail(email) {
       FROM users
       WHERE email=$1;
     `, [email]);
-
     return user;
 }
 

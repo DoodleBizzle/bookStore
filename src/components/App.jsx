@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import AuthProvider from './AuthProvider';
 import Login from './Login';
-
-import { getMessage } from '../api';
+import NavBar from './NavBar';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {
@@ -12,7 +11,7 @@ const App = () => {
   return <>
     <AuthProvider>
       <Router>
-        {/* Navbar */}
+        <NavBar/>
         <Switch>
           <Route exact path='/'>
             {/* <Home /> */}
