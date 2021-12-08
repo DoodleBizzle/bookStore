@@ -1,3 +1,4 @@
+const products = require('./productList') 
 // code to build and initialize DB goes here
 const {
   client,
@@ -30,13 +31,13 @@ async function rebuildDB() {
       CREATE TABLE products(
         id SERIAL PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
-        description VARCHAR(255),
+        description TEXT,
         author VARCHAR(255) NOT NULL,
         format VARCHAR(255) NOT NULL,
         "genreID" INTEGER REFERENCES genres(id),
         isbn VARCHAR(13) UNIQUE NOT NULL,
         cover_url VARCHAR(255),
-        price DECIMAL(2) NOT NULL,
+        price DECIMAL(10, 2) NOT NULL,
         stock INTEGER NOT NULL
       );
 
@@ -62,10 +63,7 @@ async function seedData() {
     { email: "testuser", password: "testuser999" }
   ];
 
-  const products = [
-    {title: "Crime and Punishment", author: "Fyodor Dostoevsky", description: "A great book.", format: "Hardcover", isbn: "9780143058144", cover_url: "www.google.com", price: 18.99, stock: 20},
-    {title: "Notes from Underground", author: "Fyodor Dostoevsky", description: "A good book.", format: "Paperback", isbn: "9780679734529", cover_url: "www.google.com", price: 12.99, stock: 2}
-  ];
+  
 
   const genres = [
     {name: "History"},
