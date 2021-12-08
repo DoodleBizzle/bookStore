@@ -2,7 +2,7 @@ const { client } = require(".");
 
 
 async function getCart (userID){
-  const { rows} = client.query(`
+  const { rows } = await client.query(`
     SELECT *
     FROM carts
     JOIN users
@@ -15,7 +15,7 @@ async function getCart (userID){
 }
 
 async function addItemToCart ( productID, userID, quantity ) {
-  const {rows: [cart]} = client.query(`
+  const {rows: [cart]} = await client.query(`
     INSERT INTO carts("productID", "userID", quantity)
     VALUES ($1, $2, $3)
     RETURNING *
@@ -24,7 +24,7 @@ async function addItemToCart ( productID, userID, quantity ) {
 }
 
 async function changeQuantity(cartID, quantity){
-  const { rows: [cart] } = client.query(`
+  const { rows: [cart] } = await client.query(`
     UPDATE carts
     SET quantity = $1
     WHERE id = $2
@@ -34,7 +34,7 @@ async function changeQuantity(cartID, quantity){
 }
 
 async function deleteItemFromCart(cartID, productID){
-  const {rows: [cart] } = client.query(`
+  const {rows: [cart] } = await client.query(`
     DELETE 
     FROM carts
     WHERE carts.id = $1 AND carts."productID" = $2

@@ -13,7 +13,7 @@ const Cart = () => {
 
     useEffect(() => {
         (async() => {
-            const newCart = await getCart(1, token)
+            const newCart = await getCart(`1`, token)
             setCart(newCart)
         })()
     }, []);
@@ -21,7 +21,7 @@ const Cart = () => {
 
     return (
         <div>
-            <h1></h1>
+            <h1>Cart</h1>
         </div>
     )
 };

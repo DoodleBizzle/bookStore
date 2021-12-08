@@ -1,14 +1,10 @@
 export async function getCart(userID, token) {
   try {
-    const response = await fetch(`/api/cart`, {
+    const response = await fetch(`/api/cart/user/${userID}`, {
       headers: {
         "Content-Type": "application.json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        userID,
-        token,
-      }),
+        Authorization: `Bearer ${token}`
+      }
     });
     const result = await response.json()
     return result;
