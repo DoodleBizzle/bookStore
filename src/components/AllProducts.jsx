@@ -22,12 +22,11 @@ const AllProducts = () => {
 
     console.log(products)
 
-    //ASK BART ABOUT ROUNDING OF PRICE
-
     return <>
         <h1>Products</h1>
         {products.map((product) => (
             <div key={product.id}>
+                <img src={product.cover_url} />
                 <h2>{product.title}</h2>
                 <h4>by {product.author}</h4>
                 <h4>Format: {product.format}</h4>
@@ -35,7 +34,6 @@ const AllProducts = () => {
             </div>
         ))}
     </>
-
 }
 
 export default AllProducts
