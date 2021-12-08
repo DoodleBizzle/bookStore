@@ -1,4 +1,9 @@
+const jwt = require('jsonwebtoken')
+
 function requireUser(req, res, next) {
+  const {token} = req.body
+  
+  
   if (!req.user) {
     next({
       name: "MissingUserError",

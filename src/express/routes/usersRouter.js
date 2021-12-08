@@ -77,4 +77,11 @@ usersRouter.post('/login', async (req, res, next) => {
   }
 })
 
+usersRouter.get('/authenticate', requireUser, (req, res, next) => {
+  res.send({
+    success: true,
+    user: req.user
+  });
+});
+
 module.exports = usersRouter;
