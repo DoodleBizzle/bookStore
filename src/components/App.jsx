@@ -4,6 +4,7 @@ import { Switch } from 'react-router';
 import AuthProvider from './AuthProvider';
 import CartProvider from './CartProvider';
 import Login from './Login';
+import AllProducts from './AllProducts';
 import NavBar from './NavBar';
 import Register from './Register';
 import Cart from './Cart'
@@ -33,7 +34,7 @@ const App = () => {
           <Cart />
           </Route>
           <Route path='/products'>
-            {/* <AllProducts /> */}
+            <AllProducts />
           </Route>
           <Route path='/products/:productID'>
             {/* <ProductDetails /> */}
