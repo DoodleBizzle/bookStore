@@ -76,7 +76,8 @@ async function seedData() {
   ];
 
   const carts = [
-    {productID: "1", userID: "1", quantity: 2}
+    {productID: "1", userID: "1", quantity: 2},
+    {productID: "2", userID: "1", quantity: 1}
   ]
 
   for(const user of users) {

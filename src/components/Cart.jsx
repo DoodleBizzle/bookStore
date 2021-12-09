@@ -6,16 +6,20 @@ import { cartContext } from './CartProvider';
 
 const Cart = () => {
     const { user, token } = useContext(authContext);
-    const { cart, setCart } = useContext(cartContext);
-    // const userID = user.id
-    console.log(cart);
+    const { cart, setCart, cartTotal, getCartTotal } = useContext(cartContext);
+    const userID = user.id
 
+    console.log(cart);
+    console.log(cartTotal);
+    // console.log(cart[0].price);
 
     useEffect(() => {
         (async() => {
-            const newCart = await getCart(`1`, token)
+            const newCart = await getCart(userID, token)
+            getCartTotal(newCart);
             setCart(newCart)
         })()
+
     }, []);
 
 
