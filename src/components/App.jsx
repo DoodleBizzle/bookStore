@@ -7,6 +7,7 @@ import Login from './Login';
 import AllProducts from './AllProducts';
 import NavBar from './NavBar';
 import Register from './Register';
+import Checkout from './Checkout';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {
@@ -31,6 +32,9 @@ const App = () => {
           </Route>
           <Route path='/cart'>
             {/* <Cart /> */}
+          </Route>
+          <Route path='/checkout'>
+            <Checkout />
           </Route>
           <Route path='/products'>
             <AllProducts />
