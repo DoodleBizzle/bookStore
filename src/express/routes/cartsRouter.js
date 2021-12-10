@@ -5,7 +5,7 @@ const { requireUser } = require('./utils');
 
 
 cartsRouter.use((req, res, next) => {
-  console.log("A request is being made to /users");
+  console.log("A request is being made to /carts");
   next();
 });
 
@@ -52,7 +52,10 @@ cartsRouter.patch('/products/:productID', requireUser, async (req, res, next) =>
 })
 
 cartsRouter.delete('/products/:productID', requireUser, async (req, res, next) => {
-  const {cartID, productID} = req.body;
+  const { cartID } = req.body;
+  const { productID } = req.params;
+  // console.log(`inside delete function`);
+  // console.log(cartID, productID)
   try {
     await deleteItemFromCart(cartID, productID)
 
