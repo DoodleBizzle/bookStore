@@ -10,11 +10,11 @@ const Cart = () => {
   const getCartTotal = (cart) => {
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
-      total += Number(cart[i].price);
+      total += (Number(cart[i].price) * cart[i].quantity);
     }
     return total;
   };
-
+    console.log(`this is user`, user);
   //   console.log(getCartTotal(cart));
 
   useEffect(() => {
@@ -34,10 +34,9 @@ const Cart = () => {
     })
 
     const parsedApiResponse = await apiResponse.json();
-    console.log(parsedApiResponse);
-  }
-
-  console.log(cart)
+    const newCart = cart.filter(item => parsedApiResponse);
+    console.log(`new cart`, newCart)
+  };
 
   return (
     <div>
