@@ -23,7 +23,7 @@ const Login = () => {
 
             const parsedApiResponse = await apiResponse.json()
             updateAuth(parsedApiResponse.user, parsedApiResponse.token)
-            history.push('/')
+            if(parsedApiResponse){history.push('/')}
         }
         attemptLogin()
     }
