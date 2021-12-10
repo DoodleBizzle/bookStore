@@ -21,6 +21,7 @@ const NavBar = () =>{
         </svg>
       </NavLink>
       <NavLink to="/logout">Logout</NavLink>
+      <NavLink to="/checkout">Checkout</NavLink>
     </nav>
   )
 }

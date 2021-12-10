@@ -41,6 +41,7 @@ const cartsRouter = require('./cartsRouter');
 apiRouter.use('/cart', cartsRouter);
 
 const genresRouter = require('./genresRouter');
+
 apiRouter.use('/genres', genresRouter);
 
 apiRouter.use ((req, res, next) => { 
