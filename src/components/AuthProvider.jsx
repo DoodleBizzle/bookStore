@@ -29,6 +29,7 @@ const AuthProvider = ({children}) => {
     const contextValue = {
         token,
         user,
+        setUser,
         updateAuth,
         isLoggedIn : Boolean(user)
     }
