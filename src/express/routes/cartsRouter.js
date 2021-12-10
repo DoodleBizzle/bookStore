@@ -9,7 +9,7 @@ cartsRouter.use((req, res, next) => {
   next();
 });
 
-cartsRouter.get('/user/:userID', async (req, res, next) => {
+cartsRouter.get('/user/:userID', requireUser, async (req, res, next) => {
   const {userID} = req.params;
   try {
     const cart = await getCart(userID)
@@ -28,7 +28,12 @@ cartsRouter.get('/user/:userID', async (req, res, next) => {
 });
 
 cartsRouter.post('/products', requireUser, async (req, res, next) => {
+<<<<<<< HEAD
   const {productID, userID, quantity} = req.body;
+=======
+  const {productID, quantity} = req.body;
+  const {userID} = req.user.id
+>>>>>>> origin/main
   try {
     const cart = await addItemToCart(productID, userID, quantity)
     res.send(cart);
@@ -40,24 +45,30 @@ cartsRouter.post('/products', requireUser, async (req, res, next) => {
 });
 
 cartsRouter.patch('/products/:productID', requireUser, async (req, res, next) =>{
-  const {cartID, quantity} = req.body
+  const {cartItemID, quantity} = req.body
   try {
-    const changedCart = await changeQuantity(cartID, quantity);
+    const changedCart = await changeQuantity(cartItemID, quantity);
     res.send(changedCart);
   } catch (error) {
     console.error(error);
     next({name: 'EditCartError', 
     message: "Failed To Change Quantity"})
   }
+ }
+)
 
 cartsRouter.delete('/products/:productID', requireUser, async (req, res, next) => {
-  const { cartID } = req.body;
+  const { cartItemID } = req.body;
   const { productID } = req.params;
-  // console.log(`inside delete function`);
-  // console.log(cartID, productID)
-  try {
-    await deleteItemFromCart(cartID, productID)
 
+  try {
+    const deleted = await deleteItemFromCart(cartItemID, productID)
+    if(deleted){
+      res.send(deleted)
+    }else {
+      next({name: 'NoItemError', 
+      message: "No item"})
+    }
   } catch (error) {
     console.error(error);
     next({name: 'DeleteCartItemError', 

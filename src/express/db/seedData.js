@@ -43,9 +43,10 @@ async function rebuildDB() {
 
       CREATE TABLE carts(
         id SERIAL PRIMARY KEY,
-        "userID" INTEGER REFERENCES users(id),
-        "productID" INTEGER REFERENCES products(id),
-        quantity INTEGER
+        "userID" INTEGER REFERENCES users(id) NOT NULL,
+        "productID" INTEGER REFERENCES products(id) NOT NULL,
+        quantity INTEGER NOT NULL
+        UNIQUE ("userID", "productID")
       );
 
 
