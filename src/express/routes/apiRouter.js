@@ -41,7 +41,7 @@ const cartsRouter = require('./cartsRouter');
 apiRouter.use('/cart', cartsRouter);
 
 const genresRouter = require('./genresRouter');
-// const { getUserById } = require('../db/usersMethods');
+
 apiRouter.use('/genres', genresRouter);
 
 // set up error handler here
