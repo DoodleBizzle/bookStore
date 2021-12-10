@@ -25,12 +25,12 @@ const Cart = () => {
     })();
   }, []);
 
-  const removeCartItem = async (cartID, productID) =>{
+  const removeCartItem = async (cartItemID, productID) =>{
     const apiResponse = await fetch(`/api/cart/products/${productID}`, {
         method: "DELETE", 
         headers: {'Content-Type': 'Application/json',
         'Authorization': `Bearer ${token}`}, 
-        body: JSON.stringify({cartID})
+        body: JSON.stringify({cartItemID})
     })
 
     const parsedApiResponse = await apiResponse.json();

@@ -8,6 +8,8 @@ import AllProducts from './AllProducts';
 import NavBar from './NavBar';
 import Register from './Register';
 import Cart from './Cart'
+import Checkout from './Checkout';
+import ProductDetails from './ProductDetails';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {

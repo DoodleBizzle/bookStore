@@ -45,13 +45,12 @@ async function rebuildDB() {
         id SERIAL PRIMARY KEY,
         "userID" INTEGER REFERENCES users(id) NOT NULL,
         "productID" INTEGER REFERENCES products(id) NOT NULL,
-        quantity INTEGER NOT NULL
-        UNIQUE ("userID", "productID")
-      );
-
-
-    `)    // drop tables in correct order
+        quantity INTEGER NOT NULL,
+        UNIQUE ("userID", "productID"));
+  `)    
+    // drop tables in correct order
     // build tables in correct order
+
   } catch (error) {
     throw error
   }
