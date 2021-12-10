@@ -29,10 +29,6 @@ const ProductDetails = () => {
         <br />
         <h2>Synopsis: </h2>
         <p>{product.description}</p>
-<<<<<<< HEAD
-=======
-        
->>>>>>> b9d0cc619082676c0a115f95ca89ab030fa6b51d
     </>
 
 }
