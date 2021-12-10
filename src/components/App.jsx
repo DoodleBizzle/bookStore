@@ -7,9 +7,12 @@ import Login from './Login';
 import AllProducts from './AllProducts';
 import NavBar from './NavBar';
 import Register from './Register';
+import Checkout from './Checkout';
+import ProductDetails from './ProductDetails';
 
 // This is just a sample App component, replace it with your own.
 const App = () => {
+
 
   return <>
     <AuthProvider>
@@ -18,7 +21,7 @@ const App = () => {
         <NavBar/>
         <Switch>
           <Route exact path='/'>
-            {/* <Home /> */}
+          <AllProducts />
           </Route>
           <Route path='/login'>
             <Login />
@@ -32,11 +35,14 @@ const App = () => {
           <Route path='/cart'>
             {/* <Cart /> */}
           </Route>
-          <Route path='/products'>
+          <Route path='/checkout'>
+            <Checkout />
+          </Route>
+          <Route exact path='/products'>
             <AllProducts />
           </Route>
           <Route path='/products/:productID'>
-            {/* <ProductDetails /> */}
+            <ProductDetails/>
           </Route>
           <Route path='/search'>
             {/* <SearchResults /> */}

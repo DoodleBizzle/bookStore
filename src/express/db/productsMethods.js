@@ -17,15 +17,6 @@ async function getProductsByID(productID) {
     return products
 }
 
-async function getProductsByID(productID) {
-    const {rows: [products]} = await client.query(`
-        SELECT *
-        FROM products
-        WHERE id = ($1);
-    `, [productID])
-    return products
-}
-
 async function getProductsByTitle(productTitle) {
     const {rows: [products]} = await client.query(`
         SELECT *
