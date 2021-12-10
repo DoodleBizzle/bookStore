@@ -6,7 +6,7 @@ apiRouter.use(async (req, res, next) => {
   const prefix = 'Bearer ';
   const auth = req.header('Authorization');
 
-  if (!auth) { // nothing to see here
+  if (!auth) {
     next();
   } else if (auth.startsWith(prefix)) {
     const token = auth.slice(prefix.length);
@@ -41,7 +41,6 @@ const cartsRouter = require('./cartsRouter');
 apiRouter.use('/cart', cartsRouter);
 
 const genresRouter = require('./genresRouter');
-const { getUserById } = require('../db/usersMethods');
 apiRouter.use('/genres', genresRouter);
 
 // set up error handler here
