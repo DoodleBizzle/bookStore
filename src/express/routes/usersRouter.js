@@ -9,12 +9,6 @@ usersRouter.use((req, res, next) => {
   next();
 });
 
-usersRouter.get('/authenticate', requireUser, async (req, res) => {
-  res.send({
-    success: true,
-    user: req.user
-  });
-});
 
 usersRouter.post('/register', async (req, res, next) => {
   const {email, password} = req.body;
@@ -56,6 +50,7 @@ usersRouter.post('/login', async (req, res, next) => {
       name: "MissingCredentialsError",
       message: "Please provide both a username and password"
     });
+    return;
   }
 
   try {
@@ -76,5 +71,12 @@ usersRouter.post('/login', async (req, res, next) => {
     next(error);
   }
 })
+
+usersRouter.get('/authenticate', requireUser, (req, res, next) => {
+  res.send({
+    success: true,
+    user: req.user
+  });
+});
 
 module.exports = usersRouter;

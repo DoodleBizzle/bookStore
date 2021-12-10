@@ -49,7 +49,6 @@ cartsRouter.patch('/products/:productID', requireUser, async (req, res, next) =>
     next({name: 'EditCartError', 
     message: "Failed To Change Quantity"})
   }
-})
 
 cartsRouter.delete('/products/:productID', requireUser, async (req, res, next) => {
   const { cartID } = req.body;

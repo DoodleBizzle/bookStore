@@ -1,13 +1,24 @@
-import { useState, createContext } from "react"
+import { useState, createContext, useEffect } from "react"
 
 export const authContext = createContext()
 
 const AuthProvider = ({children}) => {
-
-    //TO-DO CALL BACKEND via useEffect and verify the token!!
-
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [user, setUser] = useState(null)
+    
+    useEffect(()=>{
+        (async ()=>{
+            const response = await fetch('/api/users/authenticate',{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            const result = await response.json()
+            setUser(result.user)
+            console.log(result)
+        })()
+    },[token])
 
     const updateAuth = (user, token) => {
         setToken(token)
