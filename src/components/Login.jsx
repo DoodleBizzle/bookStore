@@ -1,8 +1,9 @@
 import { useState, useContext } from "react"
+import {useHistory} from 'react-router-dom'
 import { authContext } from "./AuthProvider"
 
 const Login = () => {
-
+    const history = useHistory()
     const [emailInput, setEmailInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
     const {updateAuth} = useContext(authContext)
@@ -22,6 +23,7 @@ const Login = () => {
 
             const parsedApiResponse = await apiResponse.json()
             updateAuth(parsedApiResponse.user, parsedApiResponse.token)
+            if(parsedApiResponse){ history.push('/products')}
         }
         attemptLogin()
     }

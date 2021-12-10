@@ -9,8 +9,8 @@ cartsRouter.use((req, res, next) => {
   next();
 });
 
-cartsRouter.get('/cart', requireUser, async (req, res, next) => {
-  const {userID} = req.body;
+cartsRouter.get('/cart/user/:userID', requireUser, async (req, res, next) => {
+  const {userID} = req.params
   try {
     const cart = await getCart(userID)
     res.send(cart);
