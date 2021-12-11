@@ -2,11 +2,7 @@ const { client } = require(".");
 
 
 async function getCart (userID){
-<<<<<<< HEAD
-  const { rows} = await client.query(`
-=======
   const { rows } = await client.query(`
->>>>>>> 050e5a1e53087a55c7d6837e53e2394b4bb16420
     SELECT *
     FROM carts
     JOIN users
@@ -27,11 +23,7 @@ async function addItemToCart ( productID, userID, quantity ) {
   return cart;
 }
 
-<<<<<<< HEAD
-async function changeQuantity(cartID, quantity){
-=======
 async function changeQuantity(productID, userID, quantity){
->>>>>>> 050e5a1e53087a55c7d6837e53e2394b4bb16420
   const { rows: [cart] } = await client.query(`
     UPDATE carts
     SET quantity = $1
@@ -41,11 +33,7 @@ async function changeQuantity(productID, userID, quantity){
   return cart;
 }
 
-<<<<<<< HEAD
-async function deleteItemFromCart(cartID, productID){
-=======
 async function deleteItemFromCart(userID, productID){
->>>>>>> 050e5a1e53087a55c7d6837e53e2394b4bb16420
   const {rows: [cart] } = await client.query(`
     DELETE 
     FROM carts

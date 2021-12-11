@@ -28,12 +28,7 @@ cartsRouter.get('/user/:userID', requireUser, async (req, res, next) => {
 });
 
 cartsRouter.post('/products', requireUser, async (req, res, next) => {
-<<<<<<< HEAD
-  const {productID, userID, quantity} = req.body;
-=======
   const {userID, productID, quantity} = req.body;
-  
->>>>>>> 050e5a1e53087a55c7d6837e53e2394b4bb16420
   try {
     const cart = await addItemToCart(productID, userID, quantity)
     res.send(cart);
