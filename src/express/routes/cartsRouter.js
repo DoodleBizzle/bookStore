@@ -28,7 +28,12 @@ cartsRouter.get('/user/:userID', requireUser, async (req, res, next) => {
 });
 
 cartsRouter.post('/products', requireUser, async (req, res, next) => {
+<<<<<<< HEAD
   const {productID, userID, quantity} = req.body;
+=======
+  const {userID, productID, quantity} = req.body;
+  
+>>>>>>> 050e5a1e53087a55c7d6837e53e2394b4bb16420
   try {
     const cart = await addItemToCart(productID, userID, quantity)
     res.send(cart);
@@ -40,9 +45,10 @@ cartsRouter.post('/products', requireUser, async (req, res, next) => {
 });
 
 cartsRouter.patch('/products/:productID', requireUser, async (req, res, next) =>{
-  const {cartItemID, quantity} = req.body
+  const {productID} = req.params
+  const {userID, quantity} = req.body
   try {
-    const changedCart = await changeQuantity(cartItemID, quantity);
+    const changedCart = await changeQuantity(productID, userID, quantity);
     res.send(changedCart);
   } catch (error) {
     console.error(error);
@@ -53,11 +59,11 @@ cartsRouter.patch('/products/:productID', requireUser, async (req, res, next) =>
 )
 
 cartsRouter.delete('/products/:productID', requireUser, async (req, res, next) => {
-  const { cartItemID } = req.body;
   const { productID } = req.params;
-
+  const {userID} = req.body
+  
   try {
-    const deleted = await deleteItemFromCart(cartItemID, productID)
+    const deleted = await deleteItemFromCart(userID, productID)
     if(deleted){
       res.send(deleted)
     }else {

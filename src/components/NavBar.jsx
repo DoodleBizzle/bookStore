@@ -7,7 +7,7 @@ const NavBar = () =>{
   
   const handleClick = () => {
     localStorage.removeItem('token')
-    setUser(null)
+    setUser({})
   }
 
   return(

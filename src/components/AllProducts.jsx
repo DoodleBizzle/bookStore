@@ -8,12 +8,13 @@ const AllProducts = () => {
     useEffect(() => {
 
         const getProducts = async () => {
-            const apiResponse = await fetch('/api/products/', {
+            const apiResponse = await fetch('/api/products', {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
             const productData = await apiResponse.json()
+            console.log(productData)
             setProducts(productData)
         }
         

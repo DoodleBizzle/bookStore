@@ -45,13 +45,12 @@ async function rebuildDB() {
         id SERIAL PRIMARY KEY,
         "userID" INTEGER REFERENCES users(id) NOT NULL,
         "productID" INTEGER REFERENCES products(id) NOT NULL,
-        quantity INTEGER NOT NULL
-        UNIQUE ("userID", "productID")
-      );
-
-
-    `)    // drop tables in correct order
+        quantity INTEGER NOT NULL,
+        UNIQUE ("userID", "productID"));
+  `)    
+    // drop tables in correct order
     // build tables in correct order
+
   } catch (error) {
     throw error
   }
@@ -61,7 +60,8 @@ async function seedData() {
   try {
 
   const users = [
-    { email: "testuser", password: "testuser999" }
+    { email: "testuser", password: "testuser999" },
+    { email: "tester@test.com", password: "password"}
   ];
 
   
@@ -75,7 +75,11 @@ async function seedData() {
   ];
 
   const carts = [
-    {productID: "1", userID: "1", quantity: 2}
+    {productID: "1", userID: "1", quantity: 2},
+    {productID: "2", userID: "1", quantity: 1},
+    {productID: "5", userID: "1", quantity: 1},
+    {productID: "10", userID: "2", quantity: 1},
+    {productID: "6", userID: "2", quantity: 1}
   ]
 
   for(const user of users) {

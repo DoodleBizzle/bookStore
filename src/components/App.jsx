@@ -7,6 +7,7 @@ import Login from './Login';
 import AllProducts from './AllProducts';
 import NavBar from './NavBar';
 import Register from './Register';
+import Cart from './Cart'
 import Checkout from './Checkout';
 import ProductDetails from './ProductDetails';
 
@@ -33,7 +34,7 @@ const App = () => {
             {/* <Profile /> */}
           </Route>
           <Route path='/cart'>
-            {/* <Cart /> */}
+          <Cart />
           </Route>
           <Route path='/checkout'>
             <Checkout />
