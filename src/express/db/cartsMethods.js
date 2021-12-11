@@ -23,23 +23,23 @@ async function addItemToCart ( productID, userID, quantity ) {
   return cart;
 }
 
-async function changeQuantity(cartID, quantity){
+async function changeQuantity(productID, userID, quantity){
   const { rows: [cart] } = await client.query(`
     UPDATE carts
     SET quantity = $1
-    WHERE id = $2
+    WHERE "userID" = $2 AND "productID" = $3
     RETURNING *;
-  `,[quantity, cartID])
+  `,[quantity, userID, productID])
   return cart;
 }
 
-async function deleteItemFromCart(cartID, productID){
+async function deleteItemFromCart(userID, productID){
   const {rows: [cart] } = await client.query(`
     DELETE 
     FROM carts
-    WHERE carts.id = $1 AND carts."productID" = $2
+    WHERE carts."userID" = $1 AND carts."productID" = $2
     RETURNING *;
-  `, [cartID, productID]);
+  `, [userID, productID]);
   return cart
 }
 
