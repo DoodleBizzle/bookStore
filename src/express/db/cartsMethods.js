@@ -2,7 +2,7 @@ const { client } = require(".");
 
 
 async function getCart (userID){
-  const { rows} = client.query(`
+  const { rows } = await client.query(`
     SELECT *
     FROM carts
     JOIN users
@@ -15,31 +15,31 @@ async function getCart (userID){
 }
 
 async function addItemToCart ( productID, userID, quantity ) {
-  const {rows: [cart]} = client.query(`
+  const {rows: [cart]} = await client.query(`
     INSERT INTO carts("productID", "userID", quantity)
     VALUES ($1, $2, $3)
-    RETURNING *
+    RETURNING *;
   `,[productID, userID, quantity])
   return cart;
 }
 
-async function changeQuantity(cartID, quantity){
-  const { rows: [cart] } = client.query(`
+async function changeQuantity(productID, userID, quantity){
+  const { rows: [cart] } = await client.query(`
     UPDATE carts
     SET quantity = $1
-    WHERE id = $2
-    RETURNING *
-  `,[quantity, cartID])
+    WHERE "userID" = $2 AND "productID" = $3
+    RETURNING *;
+  `,[quantity, userID, productID])
   return cart;
 }
 
-async function deleteItemFromCart(cartID, productID){
-  const {rows: [cart] } = client.query(`
+async function deleteItemFromCart(userID, productID){
+  const {rows: [cart] } = await client.query(`
     DELETE 
     FROM carts
-    WHERE carts.id = $1 AND carts."productID" = $2
-    RETURNING *
-  `, [cartID, productID]);
+    WHERE carts."userID" = $1 AND carts."productID" = $2
+    RETURNING *;
+  `, [userID, productID]);
   return cart
 }
 

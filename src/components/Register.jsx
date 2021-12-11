@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 
+// pull in auth provider 
+
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

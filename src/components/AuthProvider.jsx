@@ -4,7 +4,7 @@ export const authContext = createContext()
 
 const AuthProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('token'))
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
     
     useEffect(()=>{
         (async ()=>{
@@ -16,7 +16,6 @@ const AuthProvider = ({children}) => {
             })
             const result = await response.json()
             setUser(result.user)
-            console.log(result)
         })()
     },[token])
 

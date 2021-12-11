@@ -44,6 +44,10 @@ const genresRouter = require('./genresRouter');
 
 apiRouter.use('/genres', genresRouter);
 
+apiRouter.use ((req, res, next) => { 
+  res.status(404).send({name: 'api error', message: 'URL does not exist' })
+});
+
 // set up error handler here
 apiRouter.use((error, req, res, next)=>{
   console.error(error)
