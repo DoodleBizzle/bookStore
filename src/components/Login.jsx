@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import {useHistory} from 'react-router-dom'
 import { authContext } from "./AuthProvider"
+import '../styles/login.css'
 
 const Login = () => {
     const history = useHistory()
@@ -29,8 +30,8 @@ const Login = () => {
     }
 
     return <>
-        <div className='pageContainer'>
-            <div className='loginFormContainer'>
+        <div className='page-container'>
+            <div className='login-container'>
                 <form onSubmit={handleSubmit}>
                     <input type='text' placeholder='Email' value={emailInput} onChange={e => setEmailInput(e.target.value)} />
                     <input type='password' placeholder='Password' value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />

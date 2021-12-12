@@ -1,0 +1,27 @@
+nav {
+    background: #494c62;
+    border-bottom: 1px solid #282a36;
+    border-bottom-left-radius: .35rem;
+    border-bottom-right-radius: .35rem;
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.nav-right {
+    display: flex;
+}
+
+.nav-link {
+    background: #494c62;
+    margin-left: 1rem;
+}
+
+
+/* 
+#282a36
+#333545
+#3e4153
+#494c62 
+*/

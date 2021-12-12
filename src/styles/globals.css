@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Comfortaa";
+}
+
+html {
+    background: #282a36;
+}
+
+body {
+    background: #282a36;
+}
+
+/* 
+#282a36
+#333545
+#3e4153
+#494c62 
+*/

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
+import '../styles/globals.css'
 import AuthProvider from './AuthProvider';
 import CartProvider from './CartProvider';
 import Login from './Login';

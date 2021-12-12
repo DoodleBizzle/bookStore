@@ -33,7 +33,7 @@ const Register = () => {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h6 id="title">Register here!</h6>
       <form onSubmit={handleSubmit}>
         <input
