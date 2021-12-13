@@ -26,7 +26,17 @@ async function getUserByEmail(email) {
     return user;
 }
 
+async function getUserById(id) {
+  const { rows: [user] } = await client.query(`
+  SELECT id, email
+  FROM users
+  WHERE id=$1;
+`, [id]);
+return user;
+}
+
 module.exports = {
   createUser,
-  getUserByEmail
+  getUserByEmail,
+  getUserById
 }

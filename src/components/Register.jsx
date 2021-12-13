@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 
+// pull in auth provider 
+
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +33,7 @@ const Register = () => {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h6 id="title">Register here!</h6>
       <form onSubmit={handleSubmit}>
         <input

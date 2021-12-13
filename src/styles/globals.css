@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+}
+
+html {
+    background: #282a36;
+    font-family: "Comfortaa";
+}
+
+body {
+    background: #282a36;
+}
+
+/* 
+#282a36
+#333545
+#3e4153
+#494c62 
+*/

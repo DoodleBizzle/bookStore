@@ -5,15 +5,21 @@ const { requireUser } = require('./utils');
 
 
 cartsRouter.use((req, res, next) => {
-  console.log("A request is being made to /users");
+  console.log("A request is being made to /carts");
   next();
 });
 
-cartsRouter.get('/cart', requireUser, async (req, res, next) => {
-  const {userID} = req.body;
+cartsRouter.get('/user/:userID', requireUser, async (req, res, next) => {
+  const {userID} = req.params;
   try {
     const cart = await getCart(userID)
-    res.send(cart);
+
+    if(!cart){
+      res.send([]);
+    }
+    else {
+      res.send(cart);
+    };
   } catch (error) {
     console.error(error);
     next({name: 'CartError', 
@@ -21,8 +27,8 @@ cartsRouter.get('/cart', requireUser, async (req, res, next) => {
   }
 });
 
-cartsRouter.post('/cart/products', requireUser, async (req, res, next) => {
-  const {productID, userID, quantity} = req.body;
+cartsRouter.post('/products', requireUser, async (req, res, next) => {
+  const {userID, productID, quantity} = req.body;
   try {
     const cart = await addItemToCart(productID, userID, quantity)
     res.send(cart);
@@ -33,23 +39,32 @@ cartsRouter.post('/cart/products', requireUser, async (req, res, next) => {
   }
 });
 
-cartsRouter.patch('/cart/products/:productID', requireUser, async (req, res, next) =>{
-  const {cartID, quantity} = req.body
+cartsRouter.patch('/products/:productID', requireUser, async (req, res, next) =>{
+  const {productID} = req.params
+  const {userID, quantity} = req.body
   try {
-    const changedCart = await changeQuantity(cartID, quantity);
+    const changedCart = await changeQuantity(productID, userID, quantity);
     res.send(changedCart);
   } catch (error) {
     console.error(error);
     next({name: 'EditCartError', 
     message: "Failed To Change Quantity"})
   }
-})
+ }
+)
 
-cartsRouter.delete('/cart/products/:productID', requireUser, async (req, res, next) => {
-  const {cartID, productID} = req.body;
+cartsRouter.delete('/products/:productID', requireUser, async (req, res, next) => {
+  const { productID } = req.params;
+  const {userID} = req.body
+  
   try {
-    await deleteItemFromCart(cartID, productID)
-
+    const deleted = await deleteItemFromCart(userID, productID)
+    if(deleted){
+      res.send(deleted)
+    }else {
+      next({name: 'NoItemError', 
+      message: "No item"})
+    }
   } catch (error) {
     console.error(error);
     next({name: 'DeleteCartItemError', 

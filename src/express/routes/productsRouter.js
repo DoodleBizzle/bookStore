@@ -3,11 +3,11 @@ const productsRouter = express.Router();
 const {getAllProducts, getProductsByID,} = require('../db/productsMethods')
 
 productsRouter.use((req, res, next) => {
-    console.log("A request is being made to /users");
+    console.log("A request is being made to /products");
     next();
 });
 
-productsRouter.get('/', async (req, res) => {
+productsRouter.get('/', async (req, res, next) => {
 
     try {
         const products = await getAllProducts()
@@ -20,7 +20,7 @@ productsRouter.get('/', async (req, res) => {
     } 
 });
 
-productsRouter.get('/:productID', async (req, res) => {
+productsRouter.get('/:productID', async (req, res, next) => {
 
     try {
         const {productID} = req.params;
