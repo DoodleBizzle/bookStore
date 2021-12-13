@@ -15,6 +15,10 @@ body {
     background: #282a36;
 }
 
+h2, h4 {
+    margin-bottom: .5rem;
+}
+
 /* 
 #282a36
 #333545
