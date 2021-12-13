@@ -28,8 +28,8 @@ const NavBar = () =>{
         </>
         :
         <>
-        <NavLink to="/login"><h1 className='nav-link'>Login</h1></NavLink> 
-        <NavLink to="/register"><h1 className='nav-link'>Register</h1></NavLink>
+        <NavLink className='nav-link' to="/login"><h1>Login</h1></NavLink> 
+        <NavLink className='nav-link' to="/register"><h1>Register</h1></NavLink>
         </>}
         </div>
     </nav>
