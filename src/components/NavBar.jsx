@@ -14,7 +14,7 @@ const NavBar = () =>{
   return(
     <nav>
       <div>
-      <NavLink to="/products"><h1 className='nav-home'>Home</h1></NavLink>
+      <NavLink className='nav-home' to="/products"><h1>Bookr</h1></NavLink>
       </div>
       <div className='nav-right'>
       { isLoggedIn ?

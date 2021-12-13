@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 nav {
     background: #494c62;
     border-bottom: 1px solid #282a36;
@@ -5,8 +7,16 @@ nav {
     border-bottom-right-radius: .35rem;
     display: flex;
     margin-bottom: 2rem;
+    align-items: center;
     justify-content: space-between;
     padding: 1rem;
+}
+
+.nav-home {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.15rem;
+    text-decoration: none;
+    color: floralwhite;
 }
 
 .nav-right {
@@ -14,7 +24,11 @@ nav {
 }
 
 .nav-link {
-    background: #494c62;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.15rem;
+    text-decoration: none;
+    color: floralwhite;
+    /* background: #494c62; */
     margin-left: 1rem;
 }
 
