@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { getCart } from "../api/cartAPI";
 import { authContext } from "./AuthProvider";
 import { cartContext } from "./CartProvider";
@@ -9,6 +9,8 @@ const Cart = () => {
   const { user, token } = useContext(authContext);
   const { cart, setCart } = useContext(cartContext);
   const [tempQuantity, setTempQuantity] = useState({})
+  const [displayModal, setDisplayModal] = useState(false)
+  const history = useHistory()
 
 
   useEffect(() => {
@@ -71,8 +73,36 @@ const Cart = () => {
     console.log(result)
   };
 
-  console.log(cart)
+  const modal = document.getElementById("checkoutModal")
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
+  const toggleModal = () => {
+    setDisplayModal(true)
+  }
+
+  const confirmOrder = () => {
+    const userID = user.id
+    const resetCart = async (userID) => {
+      const apiResponse = await fetch(`/api/cart/user/${userID}/checkout`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      })
+
+      const parsedApiResponse = await apiResponse.json()
+    }
+    resetCart(userID)
+    setDisplayModal(false)
+    history.push('/')
+  }
+
+  console.log(cart)
 
   return (
     <div className="product-container-parent" >
@@ -99,12 +129,25 @@ const Cart = () => {
             </div>
           </div>
         ))}
-        {cart.length ? <h4 className="total" >Cart Total: ${getCartTotal(cart).toFixed(2)}</h4> : <h1 className="need-products" >Please Add Items To Your Cart</h1>}
+        <div className='total-and-checkout'>
+          {cart.length ?
+            <>
+              <h4 className="total">Cart Total: ${getCartTotal(cart).toFixed(2)}</h4>
+              <button className='checkout' type='button' onClick={toggleModal}>Checkout!</button>
+            </>
+            :
+              <h1 className='need-products'>Please Add Items To Your Cart</h1>}
+        </div>
+        <div className={displayModal ? 'checkoutModal show' : 'checkoutModal hide'}>
+          <div className='modalContent'>
+            <h2>Thanks for shopping with Bookr, {user.email}!</h2>
+            <h4>Cart Total: ${getCartTotal(cart).toFixed(2)}</h4>
+            <button onClick={confirmOrder} type='button'>Confirm Order!</button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Cart;
-
-

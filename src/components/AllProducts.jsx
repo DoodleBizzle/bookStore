@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import '../styles/all-products.css'
+import '../styles/allproducts.css'
 
 const AllProducts = () => {
 
@@ -38,7 +38,7 @@ const AllProducts = () => {
                             <h4>by {product.author}</h4>
                             <h4>Format: {product.format}</h4>
                             <h4>$ {product.price}</h4>
-                            <Link to={`/products/${product.id}`}>
+                            <Link className='product-link' to={`/products/${product.id}`}>
                                 Product Details
                             </Link>
                             <div className='product-description'>
