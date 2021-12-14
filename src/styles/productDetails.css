@@ -1,0 +1,34 @@
+.productDetails-container-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.productDetails-container {
+    background: #3e4153;
+    border: 1px solid #494c62;
+    border-radius: .35rem;
+    height: 85vh;
+    width: 65vw;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.productDetails-container::-webkit-scrollbar {
+    display: none;
+}
+
+.productDetails {
+    display: flex;
+}
+
+.img-text-container {
+    display: flex;
+}
+
+.productDetails-text {
+    padding: 1rem;
+    color: floralwhite;
+}
