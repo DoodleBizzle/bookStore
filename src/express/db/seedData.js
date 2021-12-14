@@ -69,9 +69,9 @@ async function seedData() {
   const genres = [
     {name: "History"},
     {name: "Horror"},
-    {name: "Manga"},
+    {name: "Sci-fi"},
     {name: "Fantasy"},
-    {name: "Romance"}
+    {name: "Nonfiction"}
   ];
 
   const carts = [
@@ -89,13 +89,21 @@ async function seedData() {
       VALUES ($1, $2);
     `,[user.email, user.password]);
   }
+  
+  for(const genre of genres) {
+    await client.query(`
+    INSERT INTO genres
+    (name)
+    VALUES ($1);
+    `, [genre.name]);
+  }
 
   for(const product of products) {
     await client.query(`
       INSERT INTO products
-      (title, description, author, format, isbn, cover_url, price, stock)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
-    `,[product.title, product.description, product.author, product.format, product.isbn, product.cover_url, product.price, product.stock]);
+      (title, description, author, format, isbn, cover_url, price, stock, "genreID")
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    `,[product.title, product.description, product.author, product.format, product.isbn, product.cover_url, product.price, product.stock, product.genreID]);
   }
 
   for(const cart of carts) {
@@ -105,13 +113,6 @@ async function seedData() {
     `,[cart.productID, cart.userID, cart.quantity])
   }
 
-  for(const genre of genres) {
-    await client.query(`
-    INSERT INTO genres
-    (name)
-    VALUES ($1);
-    `, [genre.name]);
-  }
 
   // create useful starting data
   } catch (error) {

@@ -1,6 +1,7 @@
 import {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { authContext } from "./AuthProvider";
+import Search from './Search'
 import '../styles/navbar.css'
 
 const NavBar = () =>{
@@ -16,6 +17,7 @@ const NavBar = () =>{
       <div>
       <NavLink className='nav-home' to="/products"><h1>Bookr</h1></NavLink>
       </div>
+      <Search/>
       <div className='nav-right'>
       { isLoggedIn ?
         <>

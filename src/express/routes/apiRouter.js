@@ -41,8 +41,10 @@ const cartsRouter = require('./cartsRouter');
 apiRouter.use('/cart', cartsRouter);
 
 const genresRouter = require('./genresRouter');
-
 apiRouter.use('/genres', genresRouter);
+
+const searchRouter = require('./searchRouter');
+apiRouter.use('/search', searchRouter)
 
 apiRouter.use ((req, res, next) => { 
   res.status(404).send({name: 'api error', message: 'URL does not exist' })
