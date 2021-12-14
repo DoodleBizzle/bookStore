@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { getCart } from "../api/cartAPI";
 import { authContext } from "./AuthProvider";
 import { cartContext } from "./CartProvider";
@@ -92,7 +93,6 @@ const Cart = () => {
         </div>
       ))}
       { cart.length ? <h4>Cart Total: ${getCartTotal(cart).toFixed(2)}</h4> : <h1>Please Add Items To Your Cart</h1> }
-      
     </div>
   );
 };
