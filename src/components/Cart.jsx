@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getCart } from "../api/cartAPI";
 import { authContext } from "./AuthProvider";
 import { cartContext } from "./CartProvider";
+import '../styles/cart.css'
 
 const Cart = () => {
   const { user, token } = useContext(authContext);
@@ -52,7 +53,7 @@ const Cart = () => {
 
 
   const changeQuantity = async (userID, productID, quantity) => {
-    if(quantity < 1 ) {removeCartItem(userID, productID)}
+    if (quantity < 1) { removeCartItem(userID, productID) }
     const response = await fetch(`/api/cart/products/${productID}`, {
       method: "PATCH",
       headers: {
@@ -72,27 +73,34 @@ const Cart = () => {
 
   console.log(cart)
 
+
   return (
-    <div>
-      {cart.map((product) => (
-        <div key={product.id}>
-          <img src={product.cover_url} />
-          <h2>{product.title}</h2>
-          <h4>by {product.author}</h4>
-          <h4>Format: {product.format}</h4>
-          <h4>Quantity:
-            <button type="button" onClick={()=>changeQuantity(product.userID, product.productID, (product.quantity -= 1))}
-            >-</button>
-            {product.quantity}
-            <button type="button" onClick={()=>changeQuantity(product.userID, product.productID, (product.quantity += 1))}
-            >+</button>
-          </h4>
-          <h4>$ {product.price}</h4>
-          <button type='button' onClick={() => removeCartItem(product.userID, product.productID)}
-          >Remove from Cart</button>
-        </div>
-      ))}
-      { cart.length ? <h4>Cart Total: ${getCartTotal(cart).toFixed(2)}</h4> : <h1>Please Add Items To Your Cart</h1> }
+    <div className="product-container-parent" >
+      <div className="product-container" >
+        {cart.map((product) => (
+          <div className='single-product' key={product.id}>
+            <div className="img-container" >
+              <img className="product-cover" src={product.cover_url} />
+            </div>
+            <div className="text-container" >
+              <h2>{product.title}</h2>
+              <h4>by {product.author}</h4>
+              <h4>Format: {product.format}</h4>
+              <h4>$ {product.price}</h4>
+              <h4 className="product-quantity" >Quantity:
+                <button className="quantity-button" type="button" onClick={() => changeQuantity(product.userID, product.productID, (product.quantity -= 1))}
+                > - </button>
+                {product.quantity}
+                <button className="quantity-button" type="button" onClick={() => changeQuantity(product.userID, product.productID, (product.quantity += 1))}
+                > + </button>
+              </h4>
+              <button className="remove-button" type='button' onClick={() => removeCartItem(product.userID, product.productID)}
+              >Remove from Cart</button>
+            </div>
+          </div>
+        ))}
+        {cart.length ? <h4 className="total" >Cart Total: ${getCartTotal(cart).toFixed(2)}</h4> : <h1 className="need-products" >Please Add Items To Your Cart</h1>}
+      </div>
     </div>
   );
 };
