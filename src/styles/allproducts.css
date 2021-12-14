@@ -34,6 +34,15 @@
     margin-left: 1rem;
 }
 
+.product-link {
+    padding: .35rem;
+    border-radius: .25rem;
+    border: 1px solid #494c62;
+    background: #333545;
+    text-decoration: none;
+    color: floralwhite;
+}
+
 .product-description {
     margin-top: 1rem;
 }

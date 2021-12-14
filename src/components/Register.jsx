@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import '../styles/register.css'
 
 // pull in auth provider 
 
