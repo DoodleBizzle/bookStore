@@ -14,7 +14,7 @@ const ProductDetails = () => {
 
         const getSingleProduct = async () => {
 
-            const apiResponse = await fetch(`http://localhost:3000/api/products/${productID}`)
+            const apiResponse = await fetch(`/api/products/${productID}`)
             const parsedApiResponse = await apiResponse.json()
             setProduct(parsedApiResponse)
 
@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
     const addItemToCart = async () => {
 
-        const apiResponse = await fetch(`http://localhost:3000/api/cart/products`, {
+        const apiResponse = await fetch(`/api/cart/products`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +61,6 @@ const ProductDetails = () => {
             </div>
         </div>
     </>
-
 }
 
 export default ProductDetails
