@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import '../styles/register.css'
+import '../styles/login.css'
 
 // pull in auth provider 
 
@@ -34,10 +34,9 @@ const Register = () => {
   }
 
   return (
-    <div className='page-container'>
-      <h6 id="title">Register here!</h6>
-      <form onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <input
+          className='form-input'
           value={email}
           placeholder="Account Email"
           onChange={(event) => {
@@ -46,6 +45,7 @@ const Register = () => {
         />
 
         <input
+          className='form-input'
           value={password}
           type = "password"
           minLength = "8"
@@ -55,11 +55,10 @@ const Register = () => {
           }}
         />
 
-        <button type="Submit" className="registerButton">
+        <button type="Submit" className="form-submit">
           Register
         </button>
       </form>
-    </div>
   );
 };
 

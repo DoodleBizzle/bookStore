@@ -2,7 +2,6 @@
 
 nav {
     background: #494c62;
-    border-bottom: 1px solid #282a36;
     border-bottom-left-radius: .35rem;
     border-bottom-right-radius: .35rem;
     display: flex;
@@ -30,10 +29,8 @@ nav {
     font-size: 2.15rem;
     text-decoration: none;
     color: floralwhite;
-    /* background: #494c62; */
     margin-left: 1rem;
 }
-
 
 /* 
 #282a36

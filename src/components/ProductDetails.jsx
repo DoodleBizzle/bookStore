@@ -46,18 +46,22 @@ const ProductDetails = () => {
         <div className='productDetails-container-parent'>
             <div className='productDetails-container'>
                 <div className='img-text-container'>
-                <div className='productDetails-img'>
-                    <img src={product.cover_url} />
+                    <div className='productDetails-img'>
+                        <img src={product.cover_url} />
                     </div>
+                    <div>
                     <div className='productDetails-text'>
-                    <h2>{product.title}</h2>
-                    <h4>by {product.author}</h4>
-                    <h4>Price: ${product.price}</h4>
-                    <button type='button' onClick={addItemToCart}>Add to Cart</button>
+                        <h2>{product.title}</h2>
+                        <h4>by {product.author}</h4>
+                        <h4>Price: ${product.price}</h4>
+                        <button type='button' onClick={addItemToCart}>Add to Cart</button>
+                    </div>
+                    <div className='synopsis-container'>
+                        <h2>Synopsis: </h2>
+                        <p>{product.description}</p>
                     </div>
                     </div>
-                    <h2>Synopsis: </h2>
-                    <p>{product.description}</p>
+                </div>
             </div>
         </div>
     </>
