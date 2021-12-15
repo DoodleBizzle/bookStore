@@ -10,10 +10,11 @@
     background: #3e4153;
     border: 1px solid #494c62;
     border-radius: .35rem;
-    height: 85vh;
+    height: fit-content;
     width: 65vw;
     overflow-y: scroll;
     padding: 1rem;
+    color: floralwhite;
 }
 
 .productDetails-container::-webkit-scrollbar {
@@ -31,4 +32,8 @@
 .productDetails-text {
     padding: 1rem;
     color: floralwhite;
+}
+
+.synopsis-container {
+    margin-left: 1rem;
 }

@@ -1,0 +1,11 @@
+.search {
+    background: #282a36;
+    border-radius: .25rem;
+    color: floralwhite;
+    font-family: 'Comfortaa';
+    font-size: 1.25rem;
+    height: 3rem;
+    width: 15rem;
+    margin-left: 8rem;
+    padding: 1.5rem;
+}

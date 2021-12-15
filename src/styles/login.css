@@ -1,5 +1,43 @@
-.page-container {
+.form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
+
+.form-input {
+    background: #494c62;
+    border-radius: .25rem;
+    color: floralwhite;
+    font-family: 'Comfortaa';
+    font-size: 1.25rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+}
+
+.form-submit {
+    color: floralwhite;
+    text-decoration: none;
+    margin: .5rem;
+    padding: .5rem;
+    font-size: 2rem;
+    border: 2px solid #494c62;
+    border-radius: .25rem;
+    background: #333545;
+    font-family: 'Dancing Script', cursive;
+  }
+  
+  .form-submit:hover {
+    color: #333545;
+    background: floralwhite;
+  }
+
+
+
+/*
+#282a36
+#333545
+#3e4153
+#494c62 
+*/

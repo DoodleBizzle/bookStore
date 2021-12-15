@@ -1,46 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-.product-container-parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
-.product-container {
-  background: #3e4153;
-  border: 1px solid #494c62;
-  border-radius: .35rem;
-  height: 85vh;
-  width: 65vw;
-  overflow-y: scroll;
-  padding: 1rem;
-  position: relative;
-}
-
-.product-container::-webkit-scrollbar {
-  display: none;
-}
-
-.single-product {
-  display: flex;
-  margin-left: 1rem;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #494c62;
-}
-
-.text-container {
-  color: floralwhite;
-  margin-top: 1rem;
-  margin-left: 1rem;
-}
-
-.product-description {
-  margin-top: 1rem;
-}
-
 .quantity-button {
   font-size: 1.15rem;
   padding-left: .5rem;

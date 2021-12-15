@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useHistory} from "react-router";
 import { useContext } from "react";
 import { searchContext } from "./SearchProvider";
+import '../styles/search.css'
 
 
 const Search = () => {
@@ -24,6 +25,7 @@ const Search = () => {
     <>
       <form>
         <input
+        className='search'
         type="text"
         value={term}
         onChange={e => setTerm(e.target.value)}
