@@ -6,22 +6,27 @@ import { cartContext } from "./CartProvider";
 import '../styles/cart.css'
 
 const Cart = () => {
-  const { user, token } = useContext(authContext);
+  const { user, token, isLoggedIn } = useContext(authContext);
   const { cart, setCart } = useContext(cartContext);
   const [tempQuantity, setTempQuantity] = useState({})
   const [displayModal, setDisplayModal] = useState(false)
   const history = useHistory()
 
-
   useEffect(() => {
     {
-      user.id ? (async () => {
+      isLoggedIn ? (async () => {
         const newCart = await getCart(user.id, token);
         getCartTotal(newCart);
         setCart(newCart);
       })() : null
     }
   }, [user, tempQuantity]);
+
+  if (!isLoggedIn) {
+    return <>
+      <h1>Please login to access your cart!</h1>
+    </>
+  }
 
 
   const getCartTotal = (cart) => {

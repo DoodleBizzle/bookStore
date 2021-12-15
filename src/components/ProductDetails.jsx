@@ -7,7 +7,7 @@ const ProductDetails = () => {
 
     const { productID } = useParams()
     const [product, setProduct] = useState({})
-    const { user, token } = useContext(authContext)
+    const { user, token, isLoggedIn } = useContext(authContext)
     const history = useHistory()
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const ProductDetails = () => {
                         <h2>{product.title}</h2>
                         <h4>by {product.author}</h4>
                         <h4>Price: ${product.price}</h4>
-                        <button type='button' onClick={addItemToCart}>Add to Cart</button>
+                        {isLoggedIn ? <button type='button' onClick={addItemToCart}>Add to Cart</button> : null}
                     </div>
                     <div className='synopsis-container'>
                         <h2>Synopsis: </h2>
