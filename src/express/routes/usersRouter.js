@@ -56,8 +56,8 @@ usersRouter.post('/login', async (req, res, next) => {
 
   try {
     const user = await getUserByEmail(email);
-
-    const matched = await bcrypt.compare(password, user.password)
+    const hashed = user.password
+    const matched = await bcrypt.compare(password, hashed)
 
     if (matched) {
       const token = jwt.sign(user, process.env.JWT_SECRET);
