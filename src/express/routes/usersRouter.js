@@ -2,6 +2,7 @@ const express = require('express');
 const usersRouter = express.Router();
 const {requireUser} = require('./utils');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs')
 const {createUser, getUserByEmail} = require('../db/usersMethods')
 
 usersRouter.use((req, res, next) => {
@@ -56,7 +57,9 @@ usersRouter.post('/login', async (req, res, next) => {
   try {
     const user = await getUserByEmail(email);
 
-    if (user && user.password == password) {
+    const matched = await bcrypt.compare(password, user.password)
+
+    if (matched) {
       const token = jwt.sign(user, process.env.JWT_SECRET);
       delete user.password
       res.send({ user, token, message: "you're logged in!" });
