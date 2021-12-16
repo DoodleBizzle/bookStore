@@ -99,15 +99,11 @@ const Cart = () => {
           "Authorization": `Bearer ${token}`
         }
       })
-
-      const parsedApiResponse = await apiResponse.json()
     }
     resetCart(userID)
     setDisplayModal(false)
-    history.push('/')
+    setTimeout(() => history.push('/'), 1000)
   }
-
-  console.log(cart)
 
   return (
     <div className="product-container-parent" >
@@ -147,7 +143,7 @@ const Cart = () => {
           <div className='modalContent'>
             <h2>Thanks for shopping with Bookr, {user.email}!</h2>
             <h4>Cart Total: ${getCartTotal(cart).toFixed(2)}</h4>
-            <button onClick={confirmOrder} type='button'>Confirm Order!</button>
+            <button className='confirmOrder' onClick={confirmOrder} type='button'>Confirm Order!</button>
           </div>
         </div>
       </div>
