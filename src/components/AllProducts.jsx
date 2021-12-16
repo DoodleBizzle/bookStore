@@ -23,8 +23,6 @@ const AllProducts = () => {
 
     }, [])
 
-    console.log(products)
-
     return <>
         <div className='product-container-parent'>
             <div className='product-container'>

@@ -33,7 +33,7 @@ usersRouter.post('/register', async (req, res, next) => {
     });
 
     res.send({
-      message: "thank you for signing up",
+      message: "Thank you for signing up!",
       token
     });
   } catch (error) {
@@ -56,13 +56,13 @@ usersRouter.post('/login', async (req, res, next) => {
 
   try {
     const user = await getUserByEmail(email);
-
-    const matched = await bcrypt.compare(password, user.password)
+    const hashed = user.password
+    const matched = await bcrypt.compare(password, hashed)
 
     if (matched) {
       const token = jwt.sign(user, process.env.JWT_SECRET);
       delete user.password
-      res.send({ user, token, message: "you're logged in!" });
+      res.send({ user, token, message: "You're logged in!" });
     } else {
       next({ 
         name: 'IncorrectCredentialsError', 

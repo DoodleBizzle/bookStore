@@ -39,7 +39,7 @@ const ProductDetails = () => {
             })
         })
 
-        history.push('/')
+        setTimeout(() => history.push('/'), 1000)
     }
 
     return <>
@@ -54,7 +54,7 @@ const ProductDetails = () => {
                         <h2>{product.title}</h2>
                         <h4>by {product.author}</h4>
                         <h4>Price: ${product.price}</h4>
-                        {isLoggedIn ? <button type='button' onClick={addItemToCart}>Add to Cart</button> : null}
+                        {isLoggedIn ? <button className='addToCart' type='button' onClick={addItemToCart}>Add to Cart</button> : null}
                     </div>
                     <div className='synopsis-container'>
                         <h2>Synopsis: </h2>

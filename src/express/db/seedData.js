@@ -1,4 +1,6 @@
 const products = require('./productList') 
+const bcrypt = require('bcryptjs')
+const SALT_COUNT = 10
 // code to build and initialize DB goes here
 const {
   client,
@@ -83,11 +85,12 @@ async function seedData() {
   ]
 
   for(const user of users) {
-    await client.query(/*sql*/`
+    const hashed = await bcrypt.hash(user.password, SALT_COUNT)
+    await client.query(`
       INSERT INTO users
       (email, password)
       VALUES ($1, $2);
-    `,[user.email, user.password]);
+    `,[user.email, hashed]);
   }
   
   for(const genre of genres) {

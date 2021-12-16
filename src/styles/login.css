@@ -33,6 +33,14 @@
     background: floralwhite;
   }
 
+  .apiMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    color: floralwhite;
+    font-family: 'Comfortaa';
+  }
 
 
 /*

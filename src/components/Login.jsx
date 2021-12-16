@@ -5,6 +5,7 @@ import '../styles/login.css'
 
 const Login = () => {
     const history = useHistory()
+    const [apiMessage, setApiMessage] = useState('')
     const [emailInput, setEmailInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
     const { updateAuth } = useContext(authContext)
@@ -23,8 +24,9 @@ const Login = () => {
             })
 
             const parsedApiResponse = await apiResponse.json()
+            setApiMessage(parsedApiResponse.message)
             updateAuth(parsedApiResponse.user, parsedApiResponse.token)
-            if (parsedApiResponse) { history.push('/') }
+            if (parsedApiResponse.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000)}
         }
         attemptLogin()
     }
@@ -35,6 +37,7 @@ const Login = () => {
             <input className='form-input' type='password' placeholder='Password' value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />
             <button className='form-submit' type='submit'>Login!</button>
         </form>
+        <h1 className='apiMessage'>{apiMessage}</h1>
     </>
 }
 
