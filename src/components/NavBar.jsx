@@ -15,7 +15,7 @@ const NavBar = () =>{
   return(
     <nav>
       <div>
-      <NavLink className='nav-home' to="/products"><h1>Bookr</h1></NavLink>
+      <NavLink className='nav-home' to="/products"><h1>Endless Worlds Bookstore</h1></NavLink>
       </div>
       <Search/>
       <div className='nav-right'>
