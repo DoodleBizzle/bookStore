@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 import { useParams, useHistory } from "react-router"
 import { authContext } from "./AuthProvider"
+import { getSingleProduct, addProductToCart } from "../API-Fetch/productsAPI"
 import '../styles/productDetails.css'
 
 const ProductDetails = () => {
@@ -12,33 +13,15 @@ const ProductDetails = () => {
 
     useEffect(() => {
 
-        const getSingleProduct = async () => {
-
-            const apiResponse = await fetch(`/api/products/${productID}`)
-            const parsedApiResponse = await apiResponse.json()
-            setProduct(parsedApiResponse)
-
-        }
-
-        getSingleProduct()
+        (async () => {
+            const newProduct = await getSingleProduct(productID)
+            setProduct(newProduct)
+        })()
 
     }, [])
 
-    const addItemToCart = async () => {
-
-        const apiResponse = await fetch(`/api/cart/products`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                productID: productID,
-                userID: user.id,
-                quantity: 1
-            })
-        })
-
+    const addToCart = async () => {
+        addProductToCart(productID, user, token)
         setTimeout(() => history.push('/'), 1000)
     }
 
@@ -50,16 +33,16 @@ const ProductDetails = () => {
                         <img src={product.cover_url} />
                     </div>
                     <div>
-                    <div className='productDetails-text'>
-                        <h2>{product.title}</h2>
-                        <h4>by {product.author}</h4>
-                        <h4>Price: ${product.price}</h4>
-                        {isLoggedIn ? <button className='addToCart' type='button' onClick={addItemToCart}>Add to Cart</button> : null}
-                    </div>
-                    <div className='synopsis-container'>
-                        <h2>Synopsis: </h2>
-                        <p>{product.description}</p>
-                    </div>
+                        <div className='productDetails-text'>
+                            <h2>{product.title}</h2>
+                            <h4>by {product.author}</h4>
+                            <h4>Price: ${product.price}</h4>
+                            {isLoggedIn ? <button className='addToCart' type='button' onClick={addToCart}>Add to Cart</button> : null}
+                        </div>
+                        <div className='synopsis-container'>
+                            <h2>Synopsis: </h2>
+                            <p>{product.description}</p>
+                        </div>
                     </div>
                 </div>
             </div>

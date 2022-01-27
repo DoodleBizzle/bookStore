@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { getProducts } from "../API-Fetch/productsAPI"
 import '../styles/allproducts.css'
 
 const AllProducts = () => {
@@ -8,18 +9,10 @@ const AllProducts = () => {
 
     useEffect(() => {
 
-        const getProducts = async () => {
-            const apiResponse = await fetch('/api/products', {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const productData = await apiResponse.json()
-            console.log(productData)
-            setProducts(productData)
-        }
-
-        getProducts()
+        (async () => {
+            const productList = await getProducts()
+            setProducts(productList)
+        })()
 
     }, [])
 
