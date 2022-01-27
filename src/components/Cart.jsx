@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { getCart } from "../api/cartAPI";
+import { getCart } from "../API-Fetch/cartAPI";
 import { authContext } from "./AuthProvider";
 import { cartContext } from "./CartProvider";
 import '../styles/cart.css'

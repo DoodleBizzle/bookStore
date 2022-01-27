@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import { authContext } from "./AuthProvider"
+import { attemptLogin } from "../API-Fetch/loginAPI"
 import '../styles/login.css'
 
 const Login = () => {
@@ -10,25 +11,15 @@ const Login = () => {
     const [passwordInput, setPasswordInput] = useState('')
     const { updateAuth } = useContext(authContext)
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        const attemptLogin = async () => {
 
-            const apiResponse = await fetch('/api/users/login', {
-                method: 'POST',
-                headers: { 'Content-type': 'Application/json' },
-                body: JSON.stringify({
-                    email: emailInput,
-                    password: passwordInput
-                })
-            })
+        const login = await attemptLogin(emailInput, passwordInput)
 
-            const parsedApiResponse = await apiResponse.json()
-            setApiMessage(parsedApiResponse.message)
-            updateAuth(parsedApiResponse.user, parsedApiResponse.token)
-            if (parsedApiResponse.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000)}
-        }
-        attemptLogin()
+        setApiMessage(login.message)
+        updateAuth(login.user, login.token)
+        
+        if (login.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000) }
     }
 
     return <>

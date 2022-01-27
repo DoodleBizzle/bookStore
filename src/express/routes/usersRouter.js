@@ -46,6 +46,7 @@ usersRouter.post('/register', async (req, res, next) => {
 usersRouter.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
 
+
   if (!email || !password) {
     next({
       name: "MissingCredentialsError",
@@ -56,6 +57,7 @@ usersRouter.post('/login', async (req, res, next) => {
 
   try {
     const user = await getUserByEmail(email);
+    //TODO fix it where if no user matching email give proper error on front end
     const hashed = user.password
     const matched = await bcrypt.compare(password, hashed)
 
