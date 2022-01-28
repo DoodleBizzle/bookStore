@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import { authContext } from "./AuthProvider"
-import { attemptLogin } from "../API-Fetch/loginAPI"
+import { attemptLogin } from "../API-Fetch/usersAPI"
 import '../styles/login.css'
 
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
 
         setApiMessage(login.message)
         updateAuth(login.user, login.token)
-        
+
         if (login.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000) }
     }
 
