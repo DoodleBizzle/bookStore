@@ -35,7 +35,28 @@ async function registerUser(email, password) {
   return userData
 }
 
+async function demoLogin () {
+  
+  try {
+
+    const apiResponse = await fetch('/api/users/login', {
+      method: 'POST',
+      headers: { 'Content-type': 'Application/json' },
+      body: JSON.stringify({
+        email: "testuser@demo.com",
+        password: "testuser"
+      })
+    })
+    const parsedApiResponse = await apiResponse.json()
+    return parsedApiResponse
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export {
   attemptLogin,
-  registerUser
+  registerUser,
+  demoLogin
 }

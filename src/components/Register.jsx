@@ -21,7 +21,9 @@ const Register = () => {
     setApiMessage(data.message)
     setToken(data.token)
     localStorage.setItem('token', token)
+
     if (data.token) setTimeout(() => history.push('/'), 1000)
+    
   }
 
   return <>

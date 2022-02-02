@@ -50,8 +50,6 @@ async function rebuildDB() {
         quantity INTEGER NOT NULL,
         UNIQUE ("userID", "productID"));
   `)    
-    // drop tables in correct order
-    // build tables in correct order
 
   } catch (error) {
     throw error
@@ -62,7 +60,7 @@ async function seedData() {
   try {
 
   const users = [
-    { email: "testuser", password: "testuser999" },
+    { email: "testuser@demo.com", password: "testuser" },
     { email: "tester@test.com", password: "password"}
   ];
 
