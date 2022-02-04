@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import { authContext } from "./AuthProvider"
+import { attemptLogin, demoLogin } from "../API-Fetch/usersAPI"
 import '../styles/login.css'
 
 const Login = () => {
@@ -10,25 +11,25 @@ const Login = () => {
     const [passwordInput, setPasswordInput] = useState('')
     const { updateAuth } = useContext(authContext)
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        const attemptLogin = async () => {
 
-            const apiResponse = await fetch('/api/users/login', {
-                method: 'POST',
-                headers: { 'Content-type': 'Application/json' },
-                body: JSON.stringify({
-                    email: emailInput,
-                    password: passwordInput
-                })
-            })
+        const login = await attemptLogin(emailInput, passwordInput)
 
-            const parsedApiResponse = await apiResponse.json()
-            setApiMessage(parsedApiResponse.message)
-            updateAuth(parsedApiResponse.user, parsedApiResponse.token)
-            if (parsedApiResponse.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000)}
-        }
-        attemptLogin()
+        setApiMessage(login.message)
+        updateAuth(login.user, login.token)
+
+        if (login.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000) }
+    }
+
+    const handleDemo = async () => {
+
+        const demo = await demoLogin()
+
+        setApiMessage(demo.message)
+        updateAuth(demo.user, demo.token)
+
+        if (demo.message === "You're logged in!") { setTimeout(() => history.push('/'), 1000) }
     }
 
     return <>
@@ -36,6 +37,7 @@ const Login = () => {
             <input className='form-input' type='text' placeholder='Email' value={emailInput} onChange={e => setEmailInput(e.target.value)} />
             <input className='form-input' type='password' placeholder='Password' value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />
             <button className='form-submit' type='submit'>Login!</button>
+            <button className='demo-user' type='button' onClick={handleDemo} >Demo User</button>
         </form>
         <h1 className='apiMessage'>{apiMessage}</h1>
     </>

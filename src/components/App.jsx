@@ -13,9 +13,8 @@ import Cart from './Cart'
 import ProductDetails from './ProductDetails';
 import SearchResult from './SearchResult';
 
-// This is just a sample App component, replace it with your own.
-const App = () => {
 
+const App = () => {
 
   return <>
     <AuthProvider>

@@ -2,6 +2,7 @@ import { searchContext } from "./SearchProvider";
 import { useContext , useEffect} from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { fetchSearch } from "../API-Fetch/searchAPI";
 
 
 const SearchResult = () =>{
@@ -11,12 +12,7 @@ const SearchResult = () =>{
 
   useEffect(()=>{
   const getSearch = async () => {
-    const response = await fetch(`/api/search${location.search}`,{
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const result = await response.json()
+    const result = await fetchSearch(location)
     setSearchResult(result)
   }
   getSearch()

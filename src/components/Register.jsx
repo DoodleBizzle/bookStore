@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router";
 import {authContext} from './AuthProvider'
+import { registerUser } from "../API-Fetch/usersAPI";
 import '../styles/login.css'
 
-// pull in auth provider 
 
 const Register = () => {
   const [apiMessage, setApiMessage] = useState('')
@@ -15,23 +15,15 @@ const Register = () => {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const response = await fetch(`/api/users/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    const data = await response.json();
-    setApiMessage(data.message)
+    const data = await registerUser(email, password)
+    
     const token = data.token
-    localStorage.setItem('token', token)
+    setApiMessage(data.message)
     setToken(data.token)
+    localStorage.setItem('token', token)
+
     if (data.token) setTimeout(() => history.push('/'), 1000)
+    
   }
 
   return <>
