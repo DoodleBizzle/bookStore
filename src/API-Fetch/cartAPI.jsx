@@ -4,7 +4,7 @@ async function getCart(userID, token) {
   try {
     const response = await fetch(`/api/cart/user/${userID}`, {
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "Application/json",
         Authorization: `Bearer ${token}`
       }
     });
