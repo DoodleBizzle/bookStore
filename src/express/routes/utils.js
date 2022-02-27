@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+
 
 function requireUser(req, res, next) {
   

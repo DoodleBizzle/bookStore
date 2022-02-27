@@ -4,7 +4,7 @@ export const authContext = createContext()
 
 const AuthProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('token'))
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
     
     useEffect(()=>{
         (async ()=>{
@@ -43,3 +43,5 @@ const AuthProvider = ({children}) => {
 }
 
 export default AuthProvider
+
+//TODO modularize fetch
