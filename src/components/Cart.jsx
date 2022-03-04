@@ -5,7 +5,7 @@ import { authContext } from "./AuthProvider";
 import { cartContext } from "./CartProvider";
 import '../styles/cart.css'
 
-//TODO fix checkout
+//TODO fix checkout and cart item count
 
 const Cart = () => {
   const { user, token, isLoggedIn } = useContext(authContext);
@@ -22,7 +22,7 @@ const Cart = () => {
         setCart(newCart);
       })() : null
     }
-  }, [user, tempQuantity]);
+  }, [user, tempQuantity, isLoggedIn]);
 
   if (!isLoggedIn) {
     return <>
