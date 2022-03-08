@@ -16,11 +16,13 @@ const Cart = () => {
 
   useEffect(() => {
     {
-      isLoggedIn ? (async () => {
+      isLoggedIn ? 
+        (async () => {
         const newCart = await getCart(user.id, token);
         getCartTotal(newCart);
         setCart(newCart);
-      })() : null
+        })() 
+      : null
     }
   }, [user, tempQuantity, isLoggedIn]);
 
