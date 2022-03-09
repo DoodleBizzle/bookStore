@@ -33,7 +33,6 @@ const EditAddress = () => {
       tempState,
       tempZip
     );
-    console.log("in handleEditSubmit",newAddress)
     setAddress(newAddress)
     setEditAddress(false)
   }
@@ -82,6 +81,7 @@ const EditAddress = () => {
         </label>
         <button type='submit' >Submit</button>
       </form>
+      <button type="button"  onClick={()=>{setEditAddress(false)}} >Cancel</button>
     </>
   )
 }
