@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAddressesByUserID, updateAddress } = require("../db/profileMethods");
+const { getAddressesByUserID, updateAddress, addNewAddress } = require("../db/profileMethods");
 const profileRouter = express.Router();
 const { requireUser } = require("./utils");
 
@@ -28,7 +28,7 @@ profileRouter.get("/", requireUser ,async (req, res, next) => {
 profileRouter.patch("/edit", requireUser, async (req, res, next) => {
   const {id} = req.user;
   const {first_name, last_name, street, city, state, zip} = req.body;
-  console.log("in profileRouter",req.body, id, first_name)
+  
   try {
     const updatedAddress = await updateAddress(id, first_name, last_name, street, city, state, zip);
     res.send(updatedAddress)
@@ -39,6 +39,22 @@ profileRouter.patch("/edit", requireUser, async (req, res, next) => {
       name: "UpdatingAddressError",
       message: "Failed To Update Address",
     });
+  }
+})
+
+profileRouter.post('/address', requireUser, async (req, res, next) => {
+  const {id} = req.user;
+  const {first_name, last_name, street, city, state, zip} = req.body;
+
+  try {
+    const newAddress = await addNewAddress(id, first_name, last_name, street, city, state, zip)
+    res.send(newAddress)
+  } catch (error) {
+    console.error(error)
+    next({
+      name: "AddingAddressError",
+      message: "Failed to Add Address"
+    })
   }
 })
 
