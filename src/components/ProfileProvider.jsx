@@ -8,19 +8,24 @@ const ProfileProvider = ({ children }) => {
   const {token} = useContext(authContext)
   const [address, setAddress] = useState({})
   const [editAddress, setEditAddress] = useState(false)
+  const [addNewAddress, setAddNewAddress] = useState(false)
 
   useEffect( async () => {
     
       const result = await getUserAddress(token)
-      setAddress(result)
-    
-  },[token, editAddress])
+      if (result.length !== 0){
+      const userAddress = result[0]
+      setAddress(userAddress)
+      }
+  },[token, editAddress,addNewAddress])
   
   const contextValue = {
     address,
     setAddress,
     editAddress,
-    setEditAddress
+    setEditAddress,
+    addNewAddress,
+    setAddNewAddress
   }; 
 
   return (
