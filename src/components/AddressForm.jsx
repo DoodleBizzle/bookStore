@@ -5,14 +5,14 @@ import { addingNewAddress } from "../API-Fetch/profileAPI";
 
 const AddressForm = () => {
   const {token, user} = useContext(authContext);
-  const { address, setAddress } = useContext(profileContext);
+  const { address, setAddress,addNewAddress, setAddNewAddress } = useContext(profileContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
-  const [addNewAddress, setAddNewAddress] = useState(false)
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ const AddressForm = () => {
     { addNewAddress ?
       <>
       <h2>Add Address</h2>
-      <form >
+      <form onSubmit={handleSubmit}>
         <label>First Name:
           <input
             type='text'

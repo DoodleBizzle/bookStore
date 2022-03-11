@@ -2,16 +2,19 @@ import {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { authContext } from "./AuthProvider";
 import {cartContext} from "./CartProvider";
+import { profileContext } from "./ProfileProvider";
 import Search from './Search'
 import '../styles/navbar.css'
 
 const NavBar = () =>{
   const {isLoggedIn, setUser} = useContext(authContext)
+  const {setAddress} = useContext(profileContext)
   const {cart} = useContext(cartContext)
   
   const handleClick = () => {
     localStorage.removeItem('token')
     setUser("")
+    setAddress({})
   }
 
   const countItem = (items) => {

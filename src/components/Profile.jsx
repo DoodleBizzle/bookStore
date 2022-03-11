@@ -11,7 +11,11 @@ const Profile = () => {
 
   return (
     <>
-      <h3>Email: {`${user.email}`}</h3>
+      { user === null ?
+        null
+        :
+        <h3>Email: {`${user.email}`}</h3>
+      }
       { editAddress 
         ?
         <EditAddress />
