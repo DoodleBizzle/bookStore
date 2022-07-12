@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react"
 
 export const authContext = createContext()
-
+//TODO modularize fetch
 const AuthProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [user, setUser] = useState(null)

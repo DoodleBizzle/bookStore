@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import { authContext } from "./AuthProvider"
 import { attemptLogin, demoLogin } from "../API-Fetch/usersAPI"
-import '../styles/login.css'
+
 
 const Login = () => {
     const history = useHistory()

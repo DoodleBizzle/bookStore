@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import { getCart, removeCartItem, changeItemQuantity } from "../API-Fetch/cartAPI";
 import { authContext } from "./AuthProvider";
 import { cartContext } from "./CartProvider";
-import '../styles/cart.css'
+
 
 //TODO fix checkout and cart item count
 
@@ -68,10 +68,10 @@ const Cart = () => {
   }
 
   return (
-    <div className="product-container-parent" >
-      <div className="product-container" >
+    <div className="container" >
+      <div className="d-grid gap-3" >
         {cart.map((product) => (
-          <div className='single-product' key={product.id}>
+          <div className='border-bottom border-dark' key={product.id}>
             <div className="img-container" >
               <img className="product-cover" src={product.cover_url} />
             </div>
@@ -112,7 +112,7 @@ const Cart = () => {
         </div>
         <div className={displayModal ? 'checkoutModal show' : 'checkoutModal hide'}>
           <div className='modalContent'>
-            <h2>Thanks for shopping with Bookr, {user.email}!</h2>
+            <h2>Thanks for shopping with Endless Worlds, {user.email}!</h2>
             <h4>Cart Total: ${getCartTotal(cart).toFixed(2)}</h4>
             <button className='confirmOrder' onClick={confirmOrder} type='button'>Confirm Order!</button>
           </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getProducts } from "../API-Fetch/productsAPI"
-import '../styles/allproducts.css'
+
 
 const AllProducts = () => {
 
@@ -17,25 +17,19 @@ const AllProducts = () => {
     }, [])
 
     return <>
-        <div className='product-container-parent'>
-            <div className='product-container'>
+        <div className='container '>
+            <div className='d-grid gap-3'>
                 {products.map((product) => (
-                    <div className='single-product' key={product.id}>
-                        <div className='img-container'>
-                            <img className='product-cover' src={product.cover_url} />
-                        </div>
-                        <div className='text-container'>
-                            <h2>{product.title}</h2>
-                            <h4>by {product.author}</h4>
-                            <h4>Format: {product.format}</h4>
-                            <h4>$ {product.price}</h4>
-                            <Link className='product-link' to={`/products/${product.id}`}>
-                                Product Details
-                            </Link>
-                            <div className='product-description'>
-                                <p>{product.description}</p>
-                            </div>
-                        </div>
+                    <div className='border-bottom border-dark ' key={product.id}>
+                        <Link to={`/products/${product.id}`} ><img className='img-fluid' src={product.cover_url} /></Link>
+                        <h2>{product.title}</h2>
+                        <h4>by {product.author}</h4>
+                        <h4>Format: {product.format}</h4>
+                        <h4>$ {product.price}</h4>
+                        <Link className='text-decoration-none fw-bold link-dark' to={`/products/${product.id}`}>
+                            Product Details
+                        </Link>
+                        <p>{product.description}</p>
                     </div>
                 ))}
             </div>

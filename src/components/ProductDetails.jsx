@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { useParams, useHistory } from "react-router"
 import { authContext } from "./AuthProvider"
 import { getSingleProduct, addProductToCart } from "../API-Fetch/productsAPI"
-import '../styles/productDetails.css'
+
 
 const ProductDetails = () => {
 
@@ -25,29 +25,19 @@ const ProductDetails = () => {
         setTimeout(() => history.push('/'), 1000)
     }
 
-    return <>
-        <div className='productDetails-container-parent'>
-            <div className='productDetails-container'>
-                <div className='img-text-container'>
-                    <div className='productDetails-img'>
-                        <img src={product.cover_url} />
-                    </div>
-                    <div>
-                        <div className='productDetails-text'>
-                            <h2>{product.title}</h2>
-                            <h4>by {product.author}</h4>
-                            <h4>Price: ${product.price}</h4>
-                            {isLoggedIn ? <button className='addToCart' type='button' onClick={addToCart}>Add to Cart</button> : null}
-                        </div>
-                        <div className='synopsis-container'>
-                            <h2>Synopsis: </h2>
-                            <p>{product.description}</p>
-                        </div>
-                    </div>
-                </div>
+    return (
+        <>
+            <div className='container'>
+                <img className="img-fluid" src={product.cover_url} />
+                <h2>{product.title}</h2>
+                <h4>by {product.author}</h4>
+                <h4>Price: ${product.price}</h4>
+                {isLoggedIn ? <button className='addToCart' type='button' onClick={addToCart}>Add to Cart</button> : null}
+                <h2>Synopsis: </h2>
+                <p>{product.description}</p>
             </div>
-        </div>
-    </>
+        </>
+    )
 }
 
 export default ProductDetails

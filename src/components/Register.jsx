@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router";
 import {authContext} from './AuthProvider'
 import { registerUser } from "../API-Fetch/usersAPI";
-import '../styles/login.css'
+
 
 
 const Register = () => {
