@@ -35,7 +35,7 @@ const AddressForm = () => {
     { addNewAddress ?
       <>
       <h2>Add Address</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="row row-cols-1 gap-3 mb-3" onSubmit={handleSubmit}>
         <label>First Name:
           <input
             type='text'
@@ -74,12 +74,12 @@ const AddressForm = () => {
             value={zip}
             onChange={e => setZip(e.target.value)} />
         </label>
-        <button type='submit' >Submit</button>
       </form>
-      <button type="button"  onClick={()=>{setAddNewAddress(false)}} >Cancel</button>
+      <button type='submit' className="btn btn-outline-dark" >Submit</button>
+      <button type="button" className="btn btn-outline-dark ms-3" onClick={()=>{setAddNewAddress(false)}} >Cancel</button>
     </>
     :
-      <button  onClick={()=>{setAddNewAddress(true)}} >Add Address</button>
+      <button  type="button" className="btn btn-outline-dark" onClick={()=>{setAddNewAddress(true)}} >Add Address</button>
     }
   </>
   )

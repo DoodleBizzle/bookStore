@@ -10,7 +10,7 @@ const Profile = () => {
   
 
   return (
-    <>
+    <div className="container">
       { user === null ?
         null
         :
@@ -22,7 +22,7 @@ const Profile = () => {
         :
         <Address/>
       }
-    </>
+    </div>
   )
 }
 

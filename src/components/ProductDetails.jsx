@@ -32,7 +32,7 @@ const ProductDetails = () => {
                 <h2>{product.title}</h2>
                 <h4>by {product.author}</h4>
                 <h4>Price: ${product.price}</h4>
-                {isLoggedIn ? <button className='addToCart' type='button' onClick={addToCart}>Add to Cart</button> : null}
+                {isLoggedIn ? <button className='addToCart btn btn-outline-dark' type='button' onClick={addToCart}>Add to Cart</button> : null}
                 <h2>Synopsis: </h2>
                 <p>{product.description}</p>
             </div>
