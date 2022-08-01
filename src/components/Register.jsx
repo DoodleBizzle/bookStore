@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import {authContext} from './AuthProvider'
 import { registerUser } from "../API-Fetch/usersAPI";
 
-
+//TODO add bootstrap to form
 
 const Register = () => {
   const [apiMessage, setApiMessage] = useState('')

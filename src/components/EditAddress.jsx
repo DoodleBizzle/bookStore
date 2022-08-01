@@ -3,6 +3,8 @@ import { authContext } from "./AuthProvider";
 import { profileContext } from "./ProfileProvider";
 import { changeAddress } from "../API-Fetch/profileAPI";
 
+//TODO add bootstrap to edit form
+
 const EditAddress = () => {
   const { token } = useContext(authContext);
   const { address, setAddress, setEditAddress } = useContext(profileContext);

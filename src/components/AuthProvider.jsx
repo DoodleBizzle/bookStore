@@ -43,5 +43,3 @@ const AuthProvider = ({children}) => {
 }
 
 export default AuthProvider
-
-//TODO modularize fetch

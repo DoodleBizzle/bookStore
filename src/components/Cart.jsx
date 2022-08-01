@@ -6,6 +6,7 @@ import { cartContext } from "./CartProvider";
 
 
 //TODO fix checkout and cart item count
+//TODO create custom css for plus minus buttons 
 
 const Cart = () => {
   const { user, token, isLoggedIn } = useContext(authContext);
