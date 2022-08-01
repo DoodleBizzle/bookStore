@@ -7,7 +7,7 @@ const Address = () => {
 
   return (
     <>
-      {Object.keys(address).length === 0 ?
+      {address ?
         <AddressForm/>
         :
         <>
