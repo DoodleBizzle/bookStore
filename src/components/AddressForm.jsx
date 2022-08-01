@@ -81,16 +81,16 @@ const AddressForm = () => {
                 maxLength="5"
                 value={zip}
                 onChange={e => setZip(e.target.value)} />
+              <div className="text-center">
+                <button
+                  type='submit'
+                  className="btn btn-outline-dark" >Submit</button>
+                <button
+                  type="button"
+                  className="btn btn-outline-dark ms-3"
+                  onClick={() => { setAddNewAddress(false) }} >Cancel</button>
+              </div>
             </form>
-          </div>
-          <div className="text-center">
-            <button
-              type='submit'
-              className="btn btn-outline-dark" >Submit</button>
-            <button
-              type="button"
-              className="btn btn-outline-dark ms-3"
-              onClick={() => { setAddNewAddress(false) }} >Cancel</button>
           </div>
         </>
         :
