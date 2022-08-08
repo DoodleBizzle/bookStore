@@ -3,7 +3,6 @@ import { authContext } from "./AuthProvider";
 import { profileContext } from "./ProfileProvider";
 import { changeAddress } from "../API-Fetch/profileAPI";
 
-//TODO add bootstrap to edit form
 
 const EditAddress = () => {
   const { token } = useContext(authContext);
@@ -38,52 +37,67 @@ const EditAddress = () => {
     setAddress(newAddress)
     setEditAddress(false)
   }
-  
+
   return (
     <>
-      <h2>Change Address</h2>
-      <form onSubmit={handleEditSubmit}>
-        <label>First Name:
+      <h2 className="text-center">Change Address</h2>
+      <div className="row row-cols-3 justify-content-center">
+        <form className="row mb-3 justify-content-center" onSubmit={handleEditSubmit}>
+          <label>First Name:
+          </label>
           <input
+            className="mb-3"
             type='text'
             value={tempFirstName}
             onChange={e => setTempFirstName(e.target.value)} />
-        </label>
-        <label>Last Name:
+          <label>Last Name:
+          </label>
           <input
+            className="mb-3"
             type='text'
             value={tempLastName}
             onChange={e => setTempLastName(e.target.value)} />
-        </label>
-        <label>Street:
+          <label>Street:
+          </label>
           <input
+            className="mb-3"
             type='text'
             value={tempStreet}
             onChange={e => setTempStreet(e.target.value)} />
-        </label>
-        <label>City:
+          <label>City:
+          </label>
           <input
+            className="mb-3"
             type='text'
             value={tempCity}
             onChange={e => setTempCity(e.target.value)} />
-        </label>
-        <label>State:
+          <label>State:
+          </label>
           <input
+            className="mb-3"
             type='text'
             value={tempState}
             onChange={e => setTempState(e.target.value)} />
-        </label>
-        <label>Zip Code:
+          <label>Zip Code:
+          </label>
           <input
+            className="mb-3"
             type='text'
             minLength="5"
             maxLength="5"
             value={tempZip}
             onChange={e => setTempZip(e.target.value)} />
-        </label>
-        <button type='submit' >Submit</button>
-      </form>
-      <button type="button"  onClick={()=>{setEditAddress(false)}} >Cancel</button>
+          <div className="text-center">
+            <button
+              type='submit'
+              className="btn btn-outline-dark" >Submit</button>
+            <button
+              type="button"
+              className="btn btn-outline-dark ms-3"
+              onClick={() => { setEditAddress(false) }} >Cancel</button>
+          </div>
+        </form>
+      </div>
     </>
   )
 }
