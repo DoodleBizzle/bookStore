@@ -6,8 +6,6 @@ import { profileContext } from "./ProfileProvider";
 import Search from './Search'
 import '../styles/navbar.css'
 
-//TODO have Profile Navlink reset states from forms so they don't appear
-
 const NavBar = () => {
   const { isLoggedIn, setUser } = useContext(authContext)
   const { setAddress } = useContext(profileContext)
