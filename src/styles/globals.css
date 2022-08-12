@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0; 
-}
 
 html {
-    background: #282a36;
     font-family: "Comfortaa";
 }
 
 body {
-    background: #282a36;
+    padding-top: 7rem;
 }
 
-h2, h4 {
-    margin-bottom: .5rem;
+
+
+@media (max-width: 750px) {
+    body{
+        padding-top: 11rem;
+    }
+    
+    .search {
+        margin-left: 2rem
+    }
 }
 
 /* 

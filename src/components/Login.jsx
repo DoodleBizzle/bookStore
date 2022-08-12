@@ -2,7 +2,6 @@ import { useState, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import { authContext } from "./AuthProvider"
 import { attemptLogin, demoLogin } from "../API-Fetch/usersAPI"
-import '../styles/login.css'
 
 const Login = () => {
     const history = useHistory()
@@ -33,13 +32,20 @@ const Login = () => {
     }
 
     return <>
-        <form className='form' onSubmit={handleSubmit}>
-            <input className='form-input' type='text' placeholder='Email' value={emailInput} onChange={e => setEmailInput(e.target.value)} />
-            <input className='form-input' type='password' placeholder='Password' value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />
-            <button className='form-submit' type='submit'>Login!</button>
-            <button className='demo-user' type='button' onClick={handleDemo} >Demo User</button>
-        </form>
-        <h1 className='apiMessage'>{apiMessage}</h1>
+        <div className="container">
+            <h1 className="text-center">User Login</h1>
+            <div className="row row-cols-3 justify-content-center">
+                <form className='row justify-content-center' onSubmit={handleSubmit}>
+                    <input className='mb-3' type='text' placeholder='Email' value={emailInput} onChange={e => setEmailInput(e.target.value)} />
+                    <input className='mb-3' type='password' placeholder='Password' value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />
+                    <div className="text-center">
+                    <button className='btn btn-outline-dark' type='submit'>Login!</button>
+                    <button className='btn btn-outline-dark ms-3' type='button' onClick={handleDemo} >Demo User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <h1 className='apiMessage text-center'>{apiMessage}</h1>
     </>
 }
 
