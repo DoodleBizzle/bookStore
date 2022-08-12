@@ -4,7 +4,6 @@ import AddressForm from "./AddressForm"
 
 const Address = () => {
   const {address, setEditAddress} = useContext(profileContext)
-  console.log(address)
 
   return (
     <>
